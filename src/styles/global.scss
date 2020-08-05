@@ -21,6 +21,7 @@ body {
     overflow-y: hidden;
     top: 0;
     bottom: 0;
+    background-color: rgb(247, 247, 247);
     margin: 0;
 }
 
@@ -68,14 +69,14 @@ body {
 
 .button.dark {
     border: 1px rgba(255, 255, 255, 0.15);
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.11);
     color: white;
     transition: all 0.5s ease;
 }
 
 .button.dark:hover {
     border: 1px rgba(255, 255, 255, 0.25);
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.18);
     color: white;
 }
 
