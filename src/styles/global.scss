@@ -1,0 +1,47 @@
+@use 'sass:map';
+/****** App Style Global Configuration ******/
+@import './variables.scss';
+
+/*** Font Customization ***/
+@import url('https://rsms.me/inter/inter.css');
+$body-font-family: 'Inter';
+$title-font: 'Inter';
+
+/**************** General ******************/
+html {
+    overflow-y: auto !important;
+    font-family: 'Inter', Helvetica, 'Segoe UI', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    position:absolute;
+    width: 100%;
+    overflow-y: hidden;
+    top: 0;
+    bottom: 0;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: rgba(0,0,0,0);
+    border-radius: 100px;
+}
+::-webkit-scrollbar:hover {
+    background-color: rgba(0, 0, 0, 0.09);
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    background: rgba(127,127,127,0.75);
+    border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:vertical:active {
+    background: rgba(0,0,0,0.61);
+    border-radius: 100px;
+}
+
+.layout {
+    height: 100%;
+    background: map.get($theme-color, "background-primary");
+}

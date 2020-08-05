@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import HelloWorld from 'src/views/HelloWorld.vue';
+import Login from 'src/views/Login/Login.vue';
+import Blog from 'src/views/Blog/Blog.vue';
+import CreatePost from 'src/views/CreatePost/CreatePost.vue';
+import EditPost from 'src/views/EditPost/EditPost.vue';
 
 Vue.use(VueRouter);
 
@@ -9,33 +12,33 @@ const routes = [
     path: '*',
     redirect: '/blog',
     name: 'redirect-default',
-    component: HelloWorld,
+    component: Blog,
   },
   {
     path: '/',
     redirect: '/blog',
     name: 'default',
-    component: HelloWorld,
+    component: Blog,
   },
   {
     path: '/login',
     name: 'login',
-    component: HelloWorld,
+    component: Login,
   },
   {
     path: '/blog',
     name: 'blog',
-    component: HelloWorld,
+    component: Blog,
   },
   {
     path: '/create-post',
     name: 'create-post',
-    component: HelloWorld,
+    component: CreatePost,
   },
   {
     path: '/edit-post',
     name: 'edit-post',
-    component: HelloWorld,
+    component: EditPost,
   },
 ];
 
