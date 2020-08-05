@@ -39,5 +39,8 @@
     "tests/**/*.ts",
     "tests/**/*.tsx"
   ],
-  "files": ["./shims/shims-vue.d.ts"]
+  "files": [
+    "./shims/shims-vue.d.ts",
+    "./shims/shims-feather.d.ts"
+  ]
 }
