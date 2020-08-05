@@ -1,0 +1,32 @@
+@use 'sass:map';
+@import 'src/styles/variables.scss';
+/****************** Layout ******************/
+.footer-layout {
+    padding: 0.5rem 1rem;
+    border-bottom: 2px solid rgba(25, 25, 25, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: map.get($theme-color, "primary");
+    
+    .content {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        overflow-x: scroll;
+        width: 100%;
+        color: white;
+        opacity: 1;
+        font-size: 14px;
+        font-weight: 700;
+        @media screen and (min-width: 1400px) {
+            max-width: 1400px;
+        }
+
+        @media screen and (max-width: 1399px) {
+            max-width: 100%;
+            padding: inherit 1rem;
+        }
+    }
+}

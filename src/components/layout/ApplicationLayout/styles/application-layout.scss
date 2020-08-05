@@ -1,9 +1,15 @@
 /*************** Application Layout ***************/
-.application-toolbar {
-}
-
 .application-content {
-}
-
-.application-footer {
+    padding: 1rem;
+    /* 
+        100vh: 100% viewport height
+        137px: 68px height for the header
+               33px height for the footer
+               32px height for the content padding
+               4px height for the footer + header borders
+        100vh - 137px: This height allows to fit always the header / footer / content
+                      without thinking about the height of content.
+    */
+    height: calc(100vh - 137px);
+    overflow-y: scroll;
 }

@@ -3,7 +3,7 @@
     <ApplicationLayout>
       <Toolbar slot="toolbar" />
       <router-view slot="content" />
-      <div slot="footer" />
+      <Footer slot="footer" />
     </ApplicationLayout>
   </div>
 </template>
@@ -12,6 +12,8 @@
 import Vue from 'vue';
 import ApplicationLayout from './components/layout/ApplicationLayout/ApplicationLayout.vue';
 import Toolbar from './components/core/Toolbar/Toolbar.vue';
+import Footer from './components/core/Footer/Footer.vue';
+
 import './styles/global.scss';
 
 export default Vue.extend({
@@ -19,6 +21,7 @@ export default Vue.extend({
   components: {
     ApplicationLayout,
     Toolbar,
+    Footer,
   },
 });
 </script>

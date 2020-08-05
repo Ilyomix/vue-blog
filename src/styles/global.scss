@@ -110,3 +110,8 @@ body {
 .mx-4 {
     margin: 0 1rem
 }
+
+/************ Colors *****************/
+.text-red {
+    color: map.get($theme-color, "red")
+}
