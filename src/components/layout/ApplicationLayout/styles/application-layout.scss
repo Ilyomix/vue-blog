@@ -6,9 +6,9 @@
         100vh: 100% viewport height
         102px: 68px height for the header
                32px height for the content padding
-               6px height for the footer + header borders
+               8px height for the footer + header borders
         100vh - 106px: This height allows to fit always the header / footer / content
                       without thinking about the height of content.
     */
-    min-height: calc(100vh - 106px);
+    min-height: calc(100vh - 108px);
 }

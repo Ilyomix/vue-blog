@@ -1,6 +1,6 @@
 <template>
   <div class="login-prompt-layout shadow-xl">
-    <h1 class="title">
+    <h1 class="title text-shadow-md">
       {{ title }}
     </h1>
     <h2 class="subtitle">

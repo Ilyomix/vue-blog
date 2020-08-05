@@ -3,18 +3,71 @@
 /****************** Layout ******************/
 .login-form-layout {
     display: flex;
+    flex-direction: column;
+    padding: 0.25rem 2rem;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex: 1 1 0;
     height: 100%;
-    background-image: linear-gradient(20deg, #fc6076 0%, #ff9a44 100%);
+    background-color: transparentize($color: #7579ff, $amount: 0.25);
 
     .title {
         color: white;
-        padding: 1rem 2rem;
+        padding: 1rem 0rem;
         width: 100%;
         text-align: left;
+        margin: 0 0 0rem 0;
         font-weight: 700;
+        font-size: 56px;
+    }
+
+    .subtitle {
+        color: rgba(255, 255, 255, 0.9);
+        padding: 0rem 0 4.5rem 0rem;
+        margin: 0;
+        width: 100%;
+        text-align: left;
+        font-weight: 400;
         font-size: 24px;
+    }
+
+    .submit-button-layout {
+        display: flex;
+        width: 100%;
+        margin-top: 3rem;
+        justify-content: flex-end;
+        align-items: center;
+
+        button {
+            width: 100%;
+            border-radius: 5px;
+            background-image: linear-gradient(270deg, #b224ef 0%, #7579ff 100%);
+            color: white;
+            border: none;
+            padding: 1rem;
+            filter: saturate(1);
+            transition: all 0.2s ease;
+            font-weight: 600;
+            svg {
+                transform: translateX(0px);
+                transition: all 0.2s ease;
+            }
+        }
+
+        button:hover {
+            width: 100%;
+            border-radius: 5px;
+            background-image: linear-gradient(270deg, #b224ef 0%, #7579ff 100%);
+            color: white;
+            padding: 1.25rem;
+            border: none;
+            filter: saturate(2);
+            transition: all 0.25s ease;
+            font-weight: 600;
+
+            svg {
+                transform: translateX(5px);
+            }
+        }
     }
 }

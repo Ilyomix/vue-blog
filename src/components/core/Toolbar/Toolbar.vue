@@ -7,7 +7,7 @@
           VUEBLOG
         </div>
       </div>
-      <button class="button white">
+      <button class="button light">
         <log-out-icon size="1.5x" class="mx-2" />
         <span>
           Sign out
