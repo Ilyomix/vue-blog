@@ -1,0 +1,7 @@
+@use 'sass:map';
+@import 'src/styles/variables.scss';
+/****************** Layout ******************/
+.login-layout {
+    width: 100%;
+    display: flex;
+}
