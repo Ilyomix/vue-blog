@@ -16,11 +16,12 @@ html {
 }
 
 body {
-    position:absolute;
+    position: absolute;
     width: 100%;
     overflow-y: hidden;
     top: 0;
     bottom: 0;
+    margin: 0;
 }
 
 ::-webkit-scrollbar {
@@ -44,4 +45,17 @@ body {
 .layout {
     height: 100%;
     background: map.get($theme-color, "background-primary");
+}
+
+/********** Shadows ***************/
+.shadow {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); 
+}
+
+.shadow-md {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);    
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }

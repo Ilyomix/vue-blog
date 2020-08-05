@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <ApplicationLayout>
-      <div slot="toolbar" />
+      <Toolbar slot="toolbar" />
       <router-view slot="content" />
       <div slot="footer" />
     </ApplicationLayout>
@@ -11,12 +11,14 @@
 <script lang="ts">
 import Vue from 'vue';
 import ApplicationLayout from './components/layout/ApplicationLayout/ApplicationLayout.vue';
+import Toolbar from './components/core/Toolbar/Toolbar.vue';
 import './styles/global.scss';
 
 export default Vue.extend({
   name: 'App',
   components: {
     ApplicationLayout,
+    Toolbar,
   },
 });
 </script>

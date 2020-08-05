@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": false,
   "scripts": {
-    "serve": "vue-cli-service serve"
+    "serve": "vue-cli-service serve --host localhost",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "autoprefixer": "^9.8.0",
