@@ -4,7 +4,10 @@
       title="Welcome to Vueblog"
       subtitle="A platform to write your articles with ease !"
     />
-    <LoginForm />
+    <LoginForm
+      title="Login"
+      subtitle="Enter your credentials to enjoy Vueblog"
+    />
   </div>
 </template>
 

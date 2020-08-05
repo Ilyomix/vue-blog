@@ -1,10 +1,10 @@
 <template>
   <div class="login-form-layout shadow-xl">
     <h1 class="title text-shadow-md">
-      Login
+      {{ title }}
     </h1>
     <h2 class="subtitle">
-      Enter your credentials for enjoying Vueblog
+      {{ subtitle }}
     </h2>
     <label
       class="label"
@@ -54,6 +54,10 @@ import './styles/login-form.scss';
   },
 })
 export default class LoginForm extends Vue {
+  @Prop({ type: String, default: '' })
+  private title!: string;
 
+  @Prop({ type: String, default: '' })
+  private subtitle!: string;
 }
 </script>

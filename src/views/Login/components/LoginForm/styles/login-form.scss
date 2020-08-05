@@ -4,12 +4,14 @@
 .login-form-layout {
     display: flex;
     flex-direction: column;
-    padding: 0.25rem 2rem;
+    padding: 2rem 3rem 3rem 3rem;
+    border-radius: 10px;
     justify-content: center;
     align-items: flex-start;
     flex: 1 1 0;
-    height: 100%;
-    background-color: transparentize($color: #7579ff, $amount: 0.25);
+    height: calc(100% - 9rem);
+    margin: 2rem;
+    background-image: linear-gradient(270deg, #1a1a1a 0%, #1a1a1a 100%);
 
     .title {
         color: white;
@@ -19,6 +21,7 @@
         margin: 0 0 0rem 0;
         font-weight: 700;
         font-size: 56px;
+        line-height: 1;
     }
 
     .subtitle {
@@ -40,7 +43,7 @@
 
         button {
             width: 100%;
-            border-radius: 5px;
+            border-radius: 10px;
             background-image: linear-gradient(270deg, #b224ef 0%, #7579ff 100%);
             color: white;
             border: none;
@@ -56,7 +59,6 @@
 
         button:hover {
             width: 100%;
-            border-radius: 5px;
             background-image: linear-gradient(270deg, #b224ef 0%, #7579ff 100%);
             color: white;
             padding: 1.25rem;

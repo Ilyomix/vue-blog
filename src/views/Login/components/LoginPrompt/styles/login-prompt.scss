@@ -5,7 +5,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 2rem;
+    padding: 2rem 3rem 3rem 3rem;
+    border-radius: 10px;
+    height: calc(100% - 9rem);
+    margin: 2rem;
     align-items: center;
     flex: 1 1 0;
     background-image: linear-gradient(90deg, #b224ef 0%, #7579ff 100%);
@@ -22,6 +25,7 @@
         text-align: left;
         font-weight: 700;
         font-size: 48px;
+        line-height: 1;
     }
 
     .subtitle {
