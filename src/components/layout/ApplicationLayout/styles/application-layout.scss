@@ -1,6 +1,8 @@
 /*************** Application Layout ***************/
 .application-content {
     padding: 1rem;
+    display: flex;
+    flex-direction: row;
     /* 
         100vh: 100% viewport height
         137px: 68px height for the header
@@ -12,4 +14,13 @@
     */
     height: calc(100vh - 137px);
     overflow-y: scroll;
+    @media screen and (min-width: 1400px) {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    @media screen and (max-width: 1399px) {
+        max-width: 100%;
+        padding: inherit 1rem;
+    }
 }
