@@ -3,9 +3,8 @@ import axios from 'axios';
 
 export const getPosts = async (page: number): Promise<any> => {
   const token = `Bearer ${localStorage.getItem('user-token')}`;
-
-  /** ************ Request configuration ************ */
   const reqUrl = `${Routes.posts.url}?page=${page || 1}`;
+
   const reqSettings = {
     headers: {
       Accept: 'application/ld+json',
@@ -18,7 +17,7 @@ export const getPosts = async (page: number): Promise<any> => {
 };
 
 export const deletePostReq = async (articleId: number): Promise<any> => {
-  /** ************ Request configuration ************ */
+  const token = `Bearer ${localStorage.getItem('user-token')}`;
   const reqUrl = `${Routes.posts.url}/${articleId}`;
 
   const reqSettings = {
@@ -30,6 +29,32 @@ export const deletePostReq = async (articleId: number): Promise<any> => {
   };
 
   return axios.delete(reqUrl, reqSettings).catch((e) => { throw e; });
+};
+
+export const updatePostReq = async (
+  content: {
+    title: string,
+    content: string,
+  },
+): Promise<any> => {
+  const token = `Bearer ${localStorage.getItem('user-token')}`;
+  const reqUrl = `${Routes.posts.url}`;
+
+  const reqSettings = {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: token,
+    },
+  };
+
+  const body = { 
+    title: content.title,
+    body: content.content,
+   };
+  console.log(reqSettings);
+
+  return axios.post(reqUrl, body, reqSettings).catch((e) => { throw e; });
 };
 
 export default getPosts;

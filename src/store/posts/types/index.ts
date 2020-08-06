@@ -5,8 +5,8 @@ export const store = createVuexClass(namespace);
 
 export const QUERY_POSTS = 'queryPosts';
 export const DELETE_POST = 'deletePost';
-export const UPDATE_POST = 'updatePosts';
-export const EDIT_POST = 'editPost';
+export const UPDATE_POST = 'updatePost';
+export const CREATE_POST = 'createPost';
 export const UPDATE_BLOG_REQUEST_STATE = 'updateBlogRequestState';
 export const CHANGE_ARTICLES_PAGE = 'changeArticlesPage';
 export const SET_NAVIGATION_CONFIGURATION = 'setNavigationConfiguration';

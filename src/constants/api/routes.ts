@@ -5,7 +5,7 @@ export const apiRoutes = {
   },
   posts: {
     url: 'https://post-api-platform.herokuapp.com/api/posts',
-  }
+  },
 };
 
 export default apiRoutes;

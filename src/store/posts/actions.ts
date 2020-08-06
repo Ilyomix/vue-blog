@@ -1,6 +1,7 @@
 import { ActionTree } from 'vuex';
 import {
   getPosts,
+  updatePostReq,
   deletePostReq,
 } from './callers';
 
@@ -8,6 +9,8 @@ import {
   PostsState,
   QUERY_POSTS,
   DELETE_POST,
+  CREATE_POST,
+  UPDATE_POST,
   SET_NAVIGATION_CONFIGURATION,
   UPDATE_BLOG_REQUEST_STATE,
   CHANGE_ARTICLES_PAGE,
@@ -79,6 +82,18 @@ const actions: ActionTree<PostsState, {}> = {
   },
   [CHANGE_ARTICLES_PAGE]({ commit }, page: number) {
     commit(CHANGE_ARTICLES_PAGE, page);
+  },
+  // [UPDATE_POST]({ commit }, page: number) {
+  //   commit(UPDATE_POST, page);
+  // },
+  [CREATE_POST](
+    { commit },
+    content: {
+      title: string,
+      body: string,
+    },
+  ) {
+    return updatePostReq(content);
   },
 };
 

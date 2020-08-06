@@ -8,6 +8,9 @@
 </template>
 
 <script lang="ts">
+import {
+  store,
+} from 'src/store/posts/types';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import EditCreateArticle from 'src/components/common/EditCreateArticle/EditCreateArticle.vue';
 
@@ -17,6 +20,12 @@ import EditCreateArticle from 'src/components/common/EditCreateArticle/EditCreat
   },
 })
 export default class CreatePost extends Vue {
+  @store.Action
+  private createPost!: (content: {
+    title: string,
+    body: string,
+  }) => Promise<Response>;
+
   private form = {};
 
   private formErrors: {[key: string]: boolean} = {
@@ -45,15 +54,17 @@ export default class CreatePost extends Vue {
     return errorIndex ? errorMessages[errorIndex] : null;
   }
 
-  private async onPublishSubmit(payload: {[key: string]: string}): Promise<void> {
-    console.log(payload)
+  private async onPublishSubmit(content: {
+      title: string,
+      body: string,
+    }): Promise<void> {
     this.resetFormErrors();
-    this.form = { ...payload };
+    this.form = { ...content };
 
     this.formErrors.form = Object.values(this.form).some(x => x === null || x === '');
 
     if (!this.formErrors.form) {
-      // API CALL Here
+      await this.createPost(content);
     }
   }
 }

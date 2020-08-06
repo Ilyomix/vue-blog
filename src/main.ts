@@ -3,6 +3,7 @@ import VueResource from 'vue-resource';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import axios from 'axios';
 
 Vue.use(VueResource);
 
@@ -14,9 +15,17 @@ Vue.http.interceptors.push((request: any, next: any) => {
   next((response: any) => {
     if (response.status === 401) {
       localStorage.removeItem('user-token');
-      router.push({ name: '/login' });
+      window.location.replace('/login');
     }
   });
+});
+
+axios.interceptors.response.use((response: any) => {
+  return response;
+}, (res: any) => {
+  if (res.response.status === 401) {
+    window.location.replace('/login');
+  }
 });
 
 Vue.config.productionTip = false;
