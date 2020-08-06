@@ -52,6 +52,12 @@ body {
     width: 100%;
 }
 
+.flex {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
 /**** Button ****/
 .button {
     outline: none;
@@ -198,6 +204,41 @@ body {
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
+/*********** Loaders *************/
+.loader-skeleton {
+    border-radius: 25px;
+    margin: 1rem 0;
+    width: 100px;
+    height: 25px;
+    background-size: 200% 200%;
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.02));
+    animation: gradientWave 1.2s ease infinite;
+}
+
+.loader-skeleton.small-round-button {
+    width: 32px;
+    height: 32px;
+}
+
+.loader-skeleton.round-button {
+    width: 48px;
+    height: 48px;
+}
+
+.loader-skeleton.title {
+    width: 232px;
+    height: 30px;
+}
+
+
+.loader-skeleton.header {
+    width: 142px;
+}
+
+.loader-skeleton.text {
+    width: 100%;
+    height: 120px;
+}
 /*********** Helpers ****************/
 /*** Horizontal margins ****/
 .mx-1 {
@@ -259,5 +300,17 @@ h1, h2, h3 {
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes gradientWave {
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
     }
 }

@@ -2,20 +2,17 @@
   <div class="fluid">
     <BlogComponent
       title="Articles"
-      :articles="[{
-        id: 1,
-        title: 'Article sur Vue.js',
-        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-      }, {
-        id: 2,
-        title: 'yolo',
-        body: 'swag'
-      }]"
+      :articles="getPosts"
+      :isLoading="isLoading"
     />
   </div>
 </template>
 
 <script lang="ts">
+import {
+  store,
+  IPosts,
+} from 'src/store/posts/types';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import BlogComponent from 'src/components/common/BlogComponent/BlogComponent.vue';
 
@@ -25,6 +22,17 @@ import BlogComponent from 'src/components/common/BlogComponent/BlogComponent.vue
   },
 })
 export default class Blog extends Vue {
+  @Prop({ type: Boolean })
+  private isLoading!: boolean;
 
+  @store.Action
+  private queryPosts!: (page: number) => Promise<Response>;
+
+  @store.Getter
+  private getPosts!: IPosts[];
+
+  private created() {
+    this.queryPosts(1);
+  }
 }
 </script>

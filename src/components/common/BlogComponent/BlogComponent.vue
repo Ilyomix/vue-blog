@@ -1,5 +1,15 @@
 <template>
-  <div>
+  <div v-if="isLoading">
+    <InteractiveCard
+      isLoading
+    />
+    <TextCard
+      v-for="index in numberOfCardsToDisplayInLoading"
+      :key="`text-card-loader-${index + 1}`"
+      isLoading
+    />
+  </div>
+  <div v-else>
     <InteractiveCard
       :text="title"
       @onCreateClick="handleCreateClick"
@@ -14,6 +24,10 @@
 </template>
 
 <script lang="ts">
+import {
+  store,
+  IBlogRequestState,
+} from 'src/store/posts/types';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import InteractiveCard from 'src/components/common/Cards/InteractiveCard/InteractiveCard.vue';
 import TextCard from 'src/components/common/Cards/TextCard/TextCard.vue';
@@ -34,6 +48,15 @@ export default class BlogCard extends Vue {
     title: string,
     body: string,
   }>;
+
+  @store.Getter
+  private getBlogRequestState!: IBlogRequestState;
+
+  private isLoading = this.getBlogRequestState
+    ? this.getBlogRequestState.requestState.loading
+    : false;
+
+  private numberOfCardsToDisplayInLoading = 6;
 
   private handleCreateClick(): void {
     this.$router.push({ name: 'create-post' });

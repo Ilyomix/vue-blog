@@ -1,6 +1,6 @@
 import Routes from 'src/constants/api/routes';
 
-export const loginApiCaller = (credentials: {[key: string]: string}): Promise<Response> => {
+export const loginApiCaller = async (credentials: {[key: string]: string}): Promise<Response> => {
   /** ************ Request configuration ************ */
   const reqUrl = Routes.login.url;
 

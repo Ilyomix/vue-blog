@@ -1,5 +1,12 @@
 <template>
-  <div class="card text shadow">
+  <div v-if="isLoading" class="card text shadow">
+    <div class="flex">
+      <div class="loader-skeleton title" />
+      <div class="loader-skeleton small-round-button" />
+    </div>
+    <div class="loader-skeleton text" />
+  </div>
+  <div v-else class="card text shadow">
     <div class="card-text-header-wrapper">
       <h2>
         {{ title }}
@@ -82,6 +89,9 @@ export default class TextCard extends Vue {
   @Prop({ type: String })
   private body!: string;
 
+  @Prop({ type: Boolean })
+  private isLoading!: boolean;
+
   private viewMore = false;
 
   private viewMoreOptions = false;
@@ -106,8 +116,7 @@ export default class TextCard extends Vue {
   }
 
   private handleEdit() {
-    this.$emit('handleEdit');
-    this.viewMoreOptions = false;
+    this.$router.push({ name: 'edit-post' });
   }
 
   private handleDelete() {
