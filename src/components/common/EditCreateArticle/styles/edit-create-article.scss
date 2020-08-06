@@ -1,0 +1,110 @@
+@use 'sass:map';
+@import 'src/styles/variables.scss';
+/****************** Layout ******************/
+.edit-create-layout {
+    display: flex;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    max-width: 780px;
+
+    h1, input, textarea {
+        align-self: flex-start;
+        width: calc(100% - 4rem);
+        margin: 1.5rem 1rem 4rem 1rem;
+    }
+
+    h1 {
+        margin-bottom: 2.5rem;
+    }
+
+    textarea {
+        min-height: 300px;
+        max-height: 300px;
+        min-width: calc(100% - 4rem);
+        max-width: calc(100% - 4rem);
+    }
+
+    label {
+        display: unset;
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .edit-create-card {
+        background-color: white;
+        padding: 1rem 2rem;
+        margin: 1rem;
+        max-width: 780px;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 10px;
+    }
+
+    .edit-create-error-wrapper {
+        width: calc(100% - 2rem);
+        margin: 0 auto;
+        margin-bottom: 1rem;
+        display: block;
+        .form-error-message {
+            background-color: white;
+            color: map.get($theme-color, "red");
+            display: inline-flex;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            margin-top: -4rem;
+            border-radius: 10px;
+            font-weight: 400;
+            font-size: 14px;
+        }
+    }
+
+    .submit-button-layout {
+        display: flex;
+        width: calc(100% - 2rem);
+        margin: 0 auto;
+        margin-top: -1rem;
+        margin-bottom: 1rem;
+        justify-content: flex-end;
+        align-items: center;
+
+        button {
+            width: 100%;
+            border-radius: 10px;
+            background-image: linear-gradient(270deg, #b224ef 0%, #7579ff 100%);
+            color: white;
+            border: none;
+            padding: 1rem;
+            filter: saturate(1);
+            transition: all 0.2s ease;
+            font-weight: 600;
+            svg {
+                transform: translateX(0px);
+                transition: all 0.2s ease;
+            }
+        }
+
+        button:hover {
+            width: 100%;
+            background-image: linear-gradient(270deg, #b224ef 0%, #7579ff 100%);
+            color: white;
+            border: none;
+            filter: saturate(2);
+            transition: all 0.25s ease;
+            font-weight: 600;
+
+            svg {
+                transform: translateX(5px);
+            }
+        }
+    }
+
+    .submit-button-layout.loading {
+        button {
+            background: linear-gradient(270deg, #b224ef, #7579ff);
+            background-size: 150% 150%;
+        
+            animation: gradientWave 2.5s ease infinite;
+        }
+    }
+}
