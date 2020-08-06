@@ -17,6 +17,9 @@ const getters: GetterTree<PostsState, {}> = {
   isBlogViewIsLoading(state: PostsState): boolean {
     return state.blogRequestState.requestState.loading;
   },
+  isBlogViewIsfetched(state: PostsState): boolean {
+    return state.blogRequestState.requestState.fetched;
+  },
   isBlogViewHasError(state: PostsState): boolean {
     return state.blogRequestState.requestState.error;
   },
@@ -29,14 +32,14 @@ const getters: GetterTree<PostsState, {}> = {
   canJumpNextPage(state: PostsState): boolean {
     return state.navigation.canJumpNextPage;
   },
-  canJumpNextFivePages(state: PostsState): boolean {
-    return state.navigation.canJumpNextFivePage;
+  canJumpLastPage(state: PostsState): boolean {
+    return state.navigation.canJumpLastPage;
   },
   canJumpPrevPage(state: PostsState): boolean {
     return state.navigation.canJumpPrevPage;
   },
-  canJumpPrevFivePages(state: PostsState): boolean {
-    return state.navigation.canJumpPrevFivePage;
+  canJumpFirstPage(state: PostsState): boolean {
+    return state.navigation.canJumpFirstPage;
   },
 };
 

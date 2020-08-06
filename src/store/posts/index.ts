@@ -20,9 +20,9 @@ export const state: PostsState = {
     start: 1,
     lastPage: 1,
     canJumpNextPage: true,
-    canJumpNextFivePage: true,
+    canJumpLastPage: true,
     canJumpPrevPage: true,
-    canJumpPrevFivePage: true,
+    canJumpFirstPage: true,
   },
 };
 

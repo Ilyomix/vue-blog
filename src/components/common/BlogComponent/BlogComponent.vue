@@ -1,7 +1,8 @@
 <template>
   <div v-if="isBlogViewIsLoading">
     <InteractiveCard
-      isLoading
+      :text="title"
+      @onCreateClick="handleCreateClick"
     />
     <TextCard
       v-for="index in numberOfCardsToDisplayInLoading"
@@ -14,6 +15,7 @@
       :text="title"
       @onCreateClick="handleCreateClick"
     />
+    <slot name="pagination" />
     <TextCard
       v-for="(article, index) in articles"
       :key="`${article.title}--${index + 1}`"
@@ -52,7 +54,7 @@ export default class BlogCard extends Vue {
   }>;
 
   @store.Getter
-  private isBlogViewIsLoading!: IBlogRequestState;
+  private isBlogViewIsLoading!: boolean;
 
   private numberOfCardsToDisplayInLoading = 6;
 

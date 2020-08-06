@@ -2,13 +2,15 @@
   <div class="pagination-wrapper flex">
    <button
       class="button accent"
-      :disabled="!navigationPossibility.canJumpPrevFivePages"
+      :disabled="!navigationPossibility.canJumpFirstPage"
+      @click="handleChange(1, true)"
     >
       <chevrons-left-icon size="1.5x" class="custom-class" />
    </button>
    <button
       class="button accent"
       :disabled="!navigationPossibility.canJumpPrevPage"
+      @click="handleChange(-1)"
     >
       <chevron-left-icon size="1.5x" class="custom-class" />
    </button>
@@ -23,12 +25,14 @@
    <button
       class="button accent"
       :disabled="!navigationPossibility.canJumpNextPage"
+      @click="handleChange(1)"
     >
       <chevron-right-icon size="1.5x" class="custom-class" />
    </button>
    <button
       class="button accent"
-      :disabled="!navigationPossibility.canJumpNextFivePages"
+      :disabled="!navigationPossibility.canJumpLastPage"
+      @click="handleChange(maxPage, true)"
     >
       <chevrons-right-icon size="1.5x" class="custom-class" />
    </button>
@@ -67,8 +71,15 @@ export default class CreatePost extends Vue {
   private navigationPossibility!: {[key: string]: boolean};
 
   // PageMovement : negative value is previous pages, positive value is next pages
-  private handleChange(pageMovement: number) {
-    this.$emit('handleChange', this.currentPage + pageMovement);
+  private handleChange(pageMovement: number, goToPageNumber: boolean) {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+
+    if (goToPageNumber) {
+      this.$emit('handleChange', pageMovement);
+    } else {
+      this.$emit('handleChange', this.currentPage + pageMovement);
+    }
   }
 }
 </script>

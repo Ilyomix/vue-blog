@@ -1,22 +1,23 @@
 <template>
   <div class="fluid">
-    <Pagination
-      @handleChange="handleNavigationChange"
-      :currentPage="getCurrentArticlePage"
-      :maxPage="getArticlesLastPage"
-      :isLoading="isLoading"
-      :navigationPossibility="{
-        canJumpNextPage,
-        canJumpNextFivePages,
-        canJumpPrevPage,
-        canJumpPrevFivePages
-      }"
-    />
     <BlogComponent
       title="Articles"
       :articles="getPosts"
       :isLoading="isLoading"
       @handleDelete="handleDelete"
+    />
+    <Pagination
+      @handleChange="handleNavigationChange"
+      onClickScrollTopPage
+      :currentPage="getCurrentArticlePage"
+      :maxPage="getArticlesLastPage"
+      :isLoading="isLoading"
+      :navigationPossibility="{
+        canJumpNextPage,
+        canJumpLastPage,
+        canJumpPrevPage,
+        canJumpFirstPage
+      }"
     />
   </div>
 </template>
@@ -55,13 +56,13 @@ export default class Blog extends Vue {
   private canJumpNextPage!: boolean;
 
   @store.Getter
-  private canJumpNextFivePages!: boolean;
+  private canJumpLastPage!: boolean;
 
   @store.Getter
   private canJumpPrevPage!: boolean;
 
   @store.Getter
-  private canJumpPrevFivePages!: boolean;
+  private canJumpFirstPage!: boolean;
 
   @store.Action
   private queryPosts!: (page: number) => Promise<Response>;

@@ -33,7 +33,9 @@ export interface IBlogNavigation {
   start: number;
   lastPage: number;
   canJumpNextPage: boolean;
-  canJumpNextFivePage: boolean;
+  canJumpLastPage: boolean;
+  canJumpPrevPage: boolean;
+  canJumpFirstPage: boolean;
 }
 
 export interface PostsState {
