@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isLoading">
+  <div v-if="isBlogViewIsLoading">
     <InteractiveCard
       isLoading
     />
@@ -50,11 +50,7 @@ export default class BlogCard extends Vue {
   }>;
 
   @store.Getter
-  private getBlogRequestState!: IBlogRequestState;
-
-  private isLoading = this.getBlogRequestState
-    ? this.getBlogRequestState.requestState.loading
-    : false;
+  private isBlogViewIsLoading!: IBlogRequestState;
 
   private numberOfCardsToDisplayInLoading = 6;
 
