@@ -83,7 +83,6 @@ export default class Blog extends Vue {
   private async handleDelete(articleId: number) {
     await this.deletePost(articleId);
     await this.queryPosts(this.getCurrentArticlePage);
-     console.log(this.getCurrentArticlePage, this.getPosts.length );
     if (this.getCurrentArticlePage > 1 && !this.getPosts.length) {
       this.changeArticlesPage(this.getCurrentArticlePage - 1);
     }
