@@ -15,6 +15,11 @@
 </template>
 
 <script lang="ts">
+import {
+  store,
+  ILoginRequestState,
+  IUserSessionState,
+} from 'src/store/login/types';
 import { Vue, Component } from 'vue-property-decorator';
 import LoginPrompt from './components/LoginPrompt/LoginPrompt.vue';
 import LoginForm from './components/LoginForm/LoginForm.vue';
@@ -27,6 +32,15 @@ import './styles/login.scss';
   },
 })
 export default class Login extends Vue {
+  @store.Action
+  private queryLogin!: (credentials: {[key: string]: string}) => Promise<Response>;
+
+  @store.Getter
+  private getLoginRequestState!: ILoginRequestState;
+
+  @store.Getter
+  private getUserSessionState!: IUserSessionState;
+
   private form = {};
 
   private formErrors: {[key: string]: boolean} = {
@@ -53,12 +67,15 @@ export default class Login extends Vue {
     return errorIndex ? errorMessages[errorIndex] : null;
   }
 
-  private onLoginSubmit(payload: {[key: string]: string}) {
+  private async onLoginSubmit(payload: {[key: string]: string}): Promise<void> {
     this.resetFormErrors();
     this.form = { ...payload };
 
     this.formErrors.form = Object.values(this.form).some(x => x === null || x === '');
-    console.log(payload);
+
+    if (!this.formErrors.form) {
+      await this.queryLogin(this.form);
+    }
   }
 }
 </script>
