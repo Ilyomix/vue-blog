@@ -13,7 +13,8 @@ const mutations: MutationTree<LoginState> = {
       stateValue: boolean;
       message: Response;
       errorMessage: Error
-    }) {
+    },
+  ) {
     const {
       stateKey,
       stateValue,
@@ -22,10 +23,9 @@ const mutations: MutationTree<LoginState> = {
     } = res;
 
     state.loginRequestState.requestState[stateKey] = stateValue;
-    state.loginRequestState.message =
-      (message && message.statusText) ||
-      (errorMessage && errorMessage.message) ||
-      '';
+    state.loginRequestState.message = (message && message.statusText)
+      || (errorMessage && errorMessage.message)
+      || '';
   },
   [UPDATE_USER_SESSION_STATE](state: LoginState, res: {
     token: string,

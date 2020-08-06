@@ -1,7 +1,7 @@
 import Routes from 'src/constants/api/routes';
 
 export const loginApiCaller = (credentials: {[key: string]: string}): Promise<Response> => {
-  /************** Request configuration *************/
+  /** ************ Request configuration ************ */
   const reqUrl = Routes.login.url;
 
   const body = {
@@ -17,7 +17,7 @@ export const loginApiCaller = (credentials: {[key: string]: string}): Promise<Re
     body: JSON.stringify(body),
   };
 
-  return fetch(reqUrl, reqSettings).catch(e => { throw e; });
+  return fetch(reqUrl, reqSettings).catch((e) => { throw e; });
 };
 
 export default loginApiCaller;

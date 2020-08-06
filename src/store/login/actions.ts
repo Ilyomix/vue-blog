@@ -68,7 +68,7 @@ const actions: ActionTree<LoginState, {}> = {
   },
   [DISCONNECT_USER]({ commit }) {
     localStorage.removeItem('user-token');
-    commit(UPDATE_USER_SESSION_STATE, { 
+    commit(UPDATE_USER_SESSION_STATE, {
       token: '',
       logged: false,
     });
