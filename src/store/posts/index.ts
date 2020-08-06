@@ -16,6 +16,14 @@ export const state: PostsState = {
     message: '',
   },
   posts: [],
+  navigation: {
+    start: 1,
+    lastPage: 1,
+    canJumpNextPage: true,
+    canJumpNextFivePage: true,
+    canJumpPrevPage: true,
+    canJumpPrevFivePage: true,
+  },
 };
 
 const namespaced: boolean = true;

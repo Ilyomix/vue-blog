@@ -1,5 +1,10 @@
 <template>
   <div class="fluid">
+    <Pagination
+      @handleChange="handleNavigationChange"
+      :currentPage="getCurrentArticlePage"
+      :isLoading="isLoading"
+    />
     <BlogComponent
       title="Articles"
       :articles="getPosts"
@@ -14,17 +19,27 @@ import {
   store,
   IPosts,
 } from 'src/store/posts/types';
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import {
+  Vue,
+  Component,
+  Prop,
+  Watch,
+} from 'vue-property-decorator';
 import BlogComponent from 'src/components/common/BlogComponent/BlogComponent.vue';
+import Pagination from 'src/components/common/Pagination/Pagination.vue';
 
 @Component({
   components: {
     BlogComponent,
+    Pagination,
   },
 })
 export default class Blog extends Vue {
   @Prop({ type: Boolean })
   private isLoading!: boolean;
+
+  @store.Getter
+  private getCurrentArticlePage !: number;
 
   @store.Action
   private queryPosts!: (page: number) => Promise<Response>;
@@ -32,18 +47,28 @@ export default class Blog extends Vue {
   @store.Action
   private deletePost!: (articleId: number) => Promise<Response>;
 
+  @store.Action
+  private changeArticlesPage!: (page: number) => void;
 
   @store.Getter
   private getPosts!: IPosts[];
 
   private created() {
-    this.queryPosts(1);
+    this.queryPosts(this.getCurrentArticlePage);
   }
 
   private async handleDelete(articleId: number) {
     await this.deletePost(articleId);
-    console.log(articleId);
-    await this.queryPosts(1);
+    await this.queryPosts(this.getCurrentArticlePage);
+  }
+
+  private handleNavigationChange(page: number) {
+    this.changeArticlesPage(page);
+  }
+
+  @Watch('getCurrentArticlePage')
+  private async onNavigationChanged() {
+    await this.queryPosts(this.getCurrentArticlePage);
   }
 }
 </script>

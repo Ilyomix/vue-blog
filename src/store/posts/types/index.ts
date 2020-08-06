@@ -8,6 +8,8 @@ export const DELETE_POST = 'deletePost';
 export const UPDATE_POST = 'updatePosts';
 export const EDIT_POST = 'editPost';
 export const UPDATE_BLOG_REQUEST_STATE = 'updateBlogRequestState';
+export const CHANGE_ARTICLES_PAGE = 'changeArticlesPage';
+export const SET_NAVIGATION_CONFIGURATION = 'setNavigationConfiguration';
 
 export interface IBlogRequestState {
   requestState: {
@@ -27,7 +29,15 @@ export interface IPosts {
   body: string;
 }
 
+export interface IBlogNavigation {
+  start: number;
+  lastPage: number;
+  canJumpNextPage: boolean;
+  canJumpNextFivePage: boolean;
+}
+
 export interface PostsState {
   posts: IPosts[];
   blogRequestState: IBlogRequestState;
+  navigation: IBlogNavigation;
 }

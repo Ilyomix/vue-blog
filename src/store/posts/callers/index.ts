@@ -8,8 +8,8 @@ export const getPosts = async (page: number): Promise<any> => {
 
   const reqSettings = {
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      Accept: 'application/ld+json',
+      'Content-Type': 'application/ld+json',
       Authorization: userToken,
     },
   };

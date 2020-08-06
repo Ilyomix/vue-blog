@@ -3,8 +3,11 @@ import {
   PostsState,
   QUERY_POSTS,
   UPDATE_BLOG_REQUEST_STATE,
+  CHANGE_ARTICLES_PAGE,
+  SET_NAVIGATION_CONFIGURATION,
   IPosts,
 } from './types';
+import articlesPerPage from 'src/constants/blog/navigation/navigation';
 
 const mutations: MutationTree<PostsState> = {
   [UPDATE_BLOG_REQUEST_STATE](
@@ -30,6 +33,16 @@ const mutations: MutationTree<PostsState> = {
   },
   [QUERY_POSTS](state: PostsState, posts: IPosts[]) {
     state.posts = posts;
+  },
+  [SET_NAVIGATION_CONFIGURATION](state: PostsState, nbArticles: number) {
+    state.navigation.lastPage = Math.ceil(nbArticles / articlesPerPage);
+    state.navigation.canJumpNextPage = state.navigation.start + 1 <= state.navigation.lastPage;
+    state.navigation.canJumpNextFivePage = state.navigation.start + 5 <= state.navigation.lastPage;
+    state.navigation.canJumpPrevPage = state.navigation.start - 5 > 0;
+    state.navigation.canJumpPrevFivePage = state.navigation.start - 1 > 0;
+  },
+  [CHANGE_ARTICLES_PAGE](state: PostsState, page: number) {
+    state.navigation.start = page;
   },
 };
 

@@ -8,7 +8,9 @@ import {
   PostsState,
   QUERY_POSTS,
   DELETE_POST,
+  SET_NAVIGATION_CONFIGURATION,
   UPDATE_BLOG_REQUEST_STATE,
+  CHANGE_ARTICLES_PAGE,
 } from './types';
 
 const actions: ActionTree<PostsState, {}> = {
@@ -24,9 +26,8 @@ const actions: ActionTree<PostsState, {}> = {
           stateKey: 'fetched',
           stateValue: true,
         });
-
-        commit(QUERY_POSTS, res.data);
-
+        commit(QUERY_POSTS, res.data['hydra:member']);
+        commit(SET_NAVIGATION_CONFIGURATION, res.data['hydra:totalItems']);
         commit(UPDATE_BLOG_REQUEST_STATE, {
           stateKey: 'loading',
           stateValue: false,
@@ -70,11 +71,14 @@ const actions: ActionTree<PostsState, {}> = {
         });
 
         commit(UPDATE_BLOG_REQUEST_STATE, {
-          stateKey: 'delete-article-loading',
+          stateKey: 'loading',
           stateValue: false,
           errorMessage: err,
         });
       });
+  },
+  [CHANGE_ARTICLES_PAGE]({ commit }, page: number) {
+    commit(CHANGE_ARTICLES_PAGE, page);
   },
 };
 
