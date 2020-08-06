@@ -3,6 +3,7 @@
     title="New article"
     :errorMessage="getErrorMessage()"
     :formErrors="formErrors"
+    :isPostArticleRequestLoading="isPostArticleRequestLoading"
     @onSubmit="onPublishSubmit"
   />
 </template>
@@ -27,6 +28,10 @@ export default class CreatePost extends Vue {
   }) => Promise<Response>;
 
   private form = {};
+
+  private isPostArticleRequestLoading = false;
+
+  private postArticleRequestErrorMessage = '';
 
   private formErrors: {[key: string]: boolean} = {
     form: false,
@@ -64,7 +69,12 @@ export default class CreatePost extends Vue {
     this.formErrors.form = Object.values(this.form).some(x => x === null || x === '');
 
     if (!this.formErrors.form) {
-      await this.createPost(content);
+      this.isPostArticleRequestLoading = true;
+
+      await this.createPost(content).then(() => {
+        this.isPostArticleRequestLoading = false;
+        this.$router.push('/blog');
+      });
     }
   }
 }

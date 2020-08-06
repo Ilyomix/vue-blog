@@ -52,7 +52,6 @@ export const updatePostReq = async (
     title: content.title,
     body: content.content,
    };
-  console.log(reqSettings);
 
   return axios.post(reqUrl, body, reqSettings).catch((e) => { throw e; });
 };
