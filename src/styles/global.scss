@@ -179,3 +179,20 @@ body {
     border-radius: 15px;
     padding: 0.5rem 2rem;
 }
+
+/************** Loaders *****************/
+/******** Loader Classic *******/
+.loader {
+    animation: rotate 1s ease-in-out infinite;
+}
+
+/************* Animations **************/
+/******* Rotate ********/
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -45,19 +45,21 @@ export default class Login extends Vue {
 
   private formErrors: {[key: string]: boolean} = {
     form: false,
-    noNetwork: false,
-    credentials: false,
+    Unauthorized: false,
+    'Failed to fetch': false,
   };
 
   private resetFormErrors() {
-    Object.keys(this.formErrors).forEach((x: string) => this.formErrors[x] === false);
+    Object.keys(this.formErrors).forEach((key: string) => {
+      this.formErrors[key] = false;
+    });
   }
 
   private getErrorMessage = (): string | null => {
     const errorMessages: {[key: string]: string} = {
       form: 'Some fields are empty !',
-      request: 'Impossible to login, check your internet connection',
-      credentials: 'Incorrect credentials, try again ?',
+      'Failed to fetch': 'Impossible to login, check your internet connection',
+      Unauthorized: 'Incorrect credentials, try again',
     };
 
     const errorIndex = Object
@@ -75,6 +77,9 @@ export default class Login extends Vue {
 
     if (!this.formErrors.form) {
       await this.queryLogin(this.form);
+      if (this.getLoginRequestState.message !== 'OK') {
+        this.formErrors[this.getLoginRequestState.message] = true;
+      }
     }
   }
 }

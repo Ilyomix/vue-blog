@@ -83,4 +83,29 @@
             }
         }
     }
+
+    .submit-button-layout.loading {
+        button {
+            background: linear-gradient(270deg, #b224ef, #7579ff);
+            background-size: 150% 150%;
+        
+            animation: gradientWave 2.5s ease infinite;
+        }
+    }
+}
+
+/**************** Animations *************/
+@keyframes gradientWave {
+    0%{
+        background-position: 0% 50%;
+        filter: saturate(1);
+    }
+    50%{
+        background-position: 100% 50%;
+        filter: saturate(2);
+    }
+    100%{
+        background-position: 0% 50%;
+        filter: saturate(1);
+    }
 }

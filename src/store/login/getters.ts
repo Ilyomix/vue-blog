@@ -17,6 +17,9 @@ const getters: GetterTree<LoginState, {}> = {
   isUserLogged(state: LoginState): boolean {
     return state.userSessionState.logged;
   },
+  isLoginRequestLoading(state: LoginState): boolean {
+    return state.loginRequestState.requestState.loading;
+  },
 };
 
 export default getters;
