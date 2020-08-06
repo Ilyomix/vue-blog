@@ -16,8 +16,8 @@ export const state: LoginState = {
     message: '',
   },
   userSessionState: {
-    logged: false,
-    token: '',
+    logged: !!localStorage.getItem('user-token'),
+    token: localStorage.getItem('user-token') || '',
   },
 };
 

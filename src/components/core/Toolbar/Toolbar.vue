@@ -10,7 +10,7 @@
       <button
         class="button light"
         v-if="isUserLogged"
-        @click="disconnectUser"
+        @click="disconnectUserFromToolbar"
       >
         <log-out-icon size="1.5x" class="mx-2" />
         <span>
@@ -40,5 +40,10 @@ export default class Toolbar extends Vue {
 
   @store.Getter
   private isUserLogged!: boolean;
+
+  private disconnectUserFromToolbar(): void {
+    this.disconnectUser();
+    this.$router.push('/login');
+  }
 }
 </script>

@@ -9,6 +9,7 @@
   "dependencies": {
     "@types/vue-feather-icons": "^5.0.0",
     "autoprefixer": "^9.8.0",
+    "axios": "^0.19.2",
     "color-interpolate": "^1.0.5",
     "core-js": "^3.6.5",
     "vue": "^2.6.10",
