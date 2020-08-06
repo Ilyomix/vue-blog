@@ -4,6 +4,7 @@
       title="Articles"
       :articles="getPosts"
       :isLoading="isLoading"
+      @handleDelete="handleDelete"
     />
   </div>
 </template>
@@ -28,11 +29,21 @@ export default class Blog extends Vue {
   @store.Action
   private queryPosts!: (page: number) => Promise<Response>;
 
+  @store.Action
+  private deletePost!: (articleId: number) => Promise<Response>;
+
+
   @store.Getter
   private getPosts!: IPosts[];
 
   private created() {
     this.queryPosts(1);
+  }
+
+  private async handleDelete(articleId: number) {
+    await this.deletePost(articleId);
+    console.log(articleId);
+    await this.queryPosts(1);
   }
 }
 </script>

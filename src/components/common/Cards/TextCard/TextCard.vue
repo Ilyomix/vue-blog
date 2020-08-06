@@ -16,7 +16,7 @@
           class="card-text-options-button-wrapper"
         >
           <button
-            v-if="viewMoreOptions"
+            v-if="viewMoreOptions && !areYouSureToDeletePost"
             class="button edit"
             @click="handleEdit"
           >
@@ -24,12 +24,28 @@
             Edit article
           </button>
           <button
-            v-if="viewMoreOptions"
+            v-if="viewMoreOptions && !areYouSureToDeletePost"
             class="button delete"
-            @click="handleDelete"
+            @click="handleAreYouSureToDeletePost"
           >
             <trash-2-icon size="1.5x" class="mr-2" />
             Delete article
+          </button>
+          <button
+            v-if="viewMoreOptions && areYouSureToDeletePost"
+            class="button cancel"
+            @click="handleAreYouSureToDeletePost"
+          >
+            <skip-back-icon size="1.5x" class="mr-2" />
+            No I'm not
+          </button>
+          <button
+            v-if="viewMoreOptions && areYouSureToDeletePost"
+            class="button delete"
+            @click="handleDelete(articleId)"
+          >
+            <trash-2-icon size="1.5x" class="mr-2" />
+            Yes I'm sure !
           </button>
           <button
             class="button text flat"
@@ -67,6 +83,7 @@ import {
   MoreVerticalIcon,
   XIcon,
   Trash2Icon,
+  SkipBackIcon,
   EditIcon,
 } from 'vue-feather-icons';
 import '../styles/cards.scss';
@@ -76,6 +93,7 @@ import './styles/text-card.scss';
   components: {
     PlusIcon,
     ChevronsDownIcon,
+    SkipBackIcon,
     MoreVerticalIcon,
     Trash2Icon,
     XIcon,
@@ -89,12 +107,17 @@ export default class TextCard extends Vue {
   @Prop({ type: String })
   private body!: string;
 
+  @Prop({ type: Number })
+  private articleId!: number;
+
   @Prop({ type: Boolean })
   private isLoading!: boolean;
 
   private viewMore = false;
 
   private viewMoreOptions = false;
+
+  private areYouSureToDeletePost = false;
 
   private textLengthThreshold = 500;
 
@@ -113,15 +136,21 @@ export default class TextCard extends Vue {
 
   private handleViewMoreOptions() {
     this.viewMoreOptions = !this.viewMoreOptions;
+    this.areYouSureToDeletePost = false;
+  }
+
+  private handleAreYouSureToDeletePost() {
+    this.areYouSureToDeletePost = !this.areYouSureToDeletePost;
   }
 
   private handleEdit() {
     this.$router.push({ name: 'edit-post' });
   }
 
-  private handleDelete() {
-    this.$emit('handleDelete');
+  private handleDelete(articleId: number) {
+    this.$emit('handleDelete', articleId);
     this.viewMoreOptions = false;
+    this.areYouSureToDeletePost = false;
   }
 }
 </script>

@@ -19,6 +19,8 @@
       :key="`${article.title}--${index + 1}`"
       :title="article.title"
       :body="article.body"
+      :articleId="article.id"
+      @handleDelete="handleDelete"
     />
   </div>
 </template>
@@ -56,6 +58,10 @@ export default class BlogCard extends Vue {
 
   private handleCreateClick(): void {
     this.$router.push({ name: 'create-post' });
+  }
+
+  private handleDelete(articleId: number): void {
+    this.$emit('handleDelete', articleId);
   }
 }
 </script>
