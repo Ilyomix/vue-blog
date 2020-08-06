@@ -4,6 +4,7 @@ export const namespace = 'login';
 export const store = createVuexClass(namespace);
 
 export const QUERY_LOGIN = 'queryLogin';
+export const DISCONNECT_USER = 'disconnectUser';
 export const UPDATE_LOGIN_REQUEST_STATE = 'updateLoginRequestState';
 export const UPDATE_USER_SESSION_STATE = 'updatUserSessionState';
 
@@ -14,7 +15,7 @@ export interface ILoginRequestState {
     error: boolean,
     [key: string]: boolean,
   };
-  message: Response;
+  message: string;
 }
 
 export interface IUserSessionState {

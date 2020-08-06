@@ -27,9 +27,12 @@ const mutations: MutationTree<LoginState> = {
       (errorMessage && errorMessage.message) ||
       '';
   },
-  [UPDATE_USER_SESSION_STATE](state: LoginState, res) {
-    state.userSessionState.token = res.data.token;
-    state.userSessionState.logged = res && res.ok;
+  [UPDATE_USER_SESSION_STATE](state: LoginState, res: {
+    token: string,
+    logged: boolean,
+  }) {
+    state.userSessionState.token = res.token;
+    state.userSessionState.logged = res && res.logged;
   },
 };
 
