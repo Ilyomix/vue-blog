@@ -1,0 +1,13 @@
+@use 'sass:map';
+@import 'src/styles/variables.scss';
+/****************** Layout ******************/
+
+.card {
+    background-color: white;
+    padding: 1rem 3rem;
+    border-radius: 10px;
+    margin: 2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

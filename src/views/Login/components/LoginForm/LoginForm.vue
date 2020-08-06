@@ -23,6 +23,7 @@
       placeholder="ex: johnDoe"
       type="text"
       v-model="form.username"
+      v-on:keyup.enter="onFormSubmit"
     />
     <label
       for="password"
@@ -37,6 +38,7 @@
       type="password"
       placeholder="********"
       v-model="form.password"
+      v-on:keyup.enter="onFormSubmit"
     />
     <div :class="isLoginRequestLoading ?
       'submit-button-layout loading' :

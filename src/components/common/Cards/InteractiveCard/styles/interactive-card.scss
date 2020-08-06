@@ -1,0 +1,8 @@
+@use 'sass:map';
+@import 'src/styles/variables.scss';
+/****************** Layout ******************/
+
+.create-element-icon {
+    color: map.get($theme-color, "accent");
+    font-size: 24px;
+}
