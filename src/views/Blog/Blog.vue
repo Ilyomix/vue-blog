@@ -3,7 +3,14 @@
     <Pagination
       @handleChange="handleNavigationChange"
       :currentPage="getCurrentArticlePage"
+      :maxPage="getArticlesLastPage"
       :isLoading="isLoading"
+      :navigationPossibility="{
+        canJumpNextPage,
+        canJumpNextFivePages,
+        canJumpPrevPage,
+        canJumpPrevFivePages
+      }"
     />
     <BlogComponent
       title="Articles"
@@ -40,6 +47,21 @@ export default class Blog extends Vue {
 
   @store.Getter
   private getCurrentArticlePage !: number;
+
+  @store.Getter
+  private getArticlesLastPage !: number;
+
+  @store.Getter
+  private canJumpNextPage!: boolean;
+
+  @store.Getter
+  private canJumpNextFivePages!: boolean;
+
+  @store.Getter
+  private canJumpPrevPage!: boolean;
+
+  @store.Getter
+  private canJumpPrevFivePages!: boolean;
 
   @store.Action
   private queryPosts!: (page: number) => Promise<Response>;

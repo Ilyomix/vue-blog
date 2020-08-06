@@ -1,6 +1,37 @@
 @use 'sass:map';
-@import './variables.scss';
+@import 'src/styles/variables.scss';
 /****** Layout ******/
-.pagination {
-    background: orange;
+.pagination-wrapper {
+    width: calc(100% - 4rem);
+    max-width: 786px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    button {
+        border-radius: 10px;
+        width: 100%;
+        margin: 0 0.5rem
+    }
+
+    .page-badge {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        background-color: white;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        .page-label {
+            color: map.get($theme-color, "accent");
+            font-weight: 400;
+        }
+
+        .page {
+            color: map.get($theme-color, "accent");
+            font-weight: 600;
+        }
+    }
 }
