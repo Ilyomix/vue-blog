@@ -41,6 +41,7 @@
   ],
   "files": [
     "./shims/shims-vue.d.ts",
-    "./shims/shims-feather.d.ts"
+    "./shims/shims-feather.d.ts",
+    "./shims/shims-http.d.ts",
   ]
 }

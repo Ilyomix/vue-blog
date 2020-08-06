@@ -1,0 +1,11 @@
+@use 'sass:map';
+@import 'src/styles/variables.scss';
+/****************** Layout ******************/
+.login-layout {
+    width: 100%;
+    display: flex;
+
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+    }
+}

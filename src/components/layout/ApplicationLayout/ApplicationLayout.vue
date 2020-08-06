@@ -8,7 +8,7 @@
     </div>
     <div class="application-footer">
       <slot name="footer" />
-      </div>
+    </div>
   </div>
 </template>
 <script lang="ts">
