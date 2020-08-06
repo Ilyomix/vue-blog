@@ -108,6 +108,43 @@ body {
     color: white;
 }
 
+.button.text {
+    background: none;
+    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    font-weight: 500;
+}
+
+.button.text.violet {
+    color: map.get($theme-color, "accent");
+}
+
+.button.text.flat {
+    box-shadow: none;
+    color: map.get($theme-color, "text");
+    width: 32px;
+    height: 32px;
+    padding: 0.2rem;
+}
+
+.button.text.flat:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+}
+
+.button.edit {
+    color: white;
+    background: map.get($theme-color, "accent");
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 0.25rem 1rem;
+}
+
+.button.delete {
+    color: white;
+    background: map.get($theme-color, "red");
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 0.25rem 1rem;
+}
+
 /********** Inputs *****************/
 .input {
     outline: 0;

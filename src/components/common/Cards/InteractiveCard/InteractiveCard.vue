@@ -26,7 +26,7 @@ import './styles/interactive-card.scss';
     PlusIcon,
   },
 })
-export default class BlogCard extends Vue {
+export default class InteractiveCard extends Vue {
   @Prop({ type: String })
   private text!: string;
 

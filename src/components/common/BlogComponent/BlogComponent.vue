@@ -4,22 +4,24 @@
       :text="title"
       @onCreateClick="handleCreateClick"
     />
-    <div
+    <TextCard
       v-for="(article, index) in articles"
       :key="`${article.title}--${index + 1}`"
-    >
-      {{ article.title }}
-    </div>
+      :title="article.title"
+      :body="article.body"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import InteractiveCard from 'src/components/common/Cards/InteractiveCard/InteractiveCard.vue';
+import TextCard from 'src/components/common/Cards/TextCard/TextCard.vue';
 
 @Component({
   components: {
     InteractiveCard,
+    TextCard,
   },
 })
 export default class BlogCard extends Vue {
