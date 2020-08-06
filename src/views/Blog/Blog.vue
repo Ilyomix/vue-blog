@@ -76,7 +76,7 @@ export default class Blog extends Vue {
   @store.Getter
   private getPosts!: IPosts[];
 
-  private created() {
+  private mounted() {
     this.queryPosts(this.getCurrentArticlePage);
   }
 

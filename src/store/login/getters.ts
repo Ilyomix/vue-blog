@@ -20,6 +20,9 @@ const getters: GetterTree<LoginState, {}> = {
   isLoginRequestLoading(state: LoginState): boolean {
     return state.loginRequestState.requestState.loading;
   },
+  getSessionToken(state: LoginState): string {
+    return state.userSessionState.token;
+  },
 };
 
 export default getters;

@@ -76,12 +76,13 @@ export default class Login extends Vue {
     this.formErrors.form = Object.values(this.form).some(x => x === null || x === '');
 
     if (!this.formErrors.form) {
-      await this.queryLogin(this.form);
-      if (this.getLoginRequestState.message !== 'OK') {
-        this.formErrors[this.getLoginRequestState.message] = true;
-      } else {
-        this.$router.push('/blog');
-      }
+      await this.queryLogin(this.form).then(() => {
+        if (this.getLoginRequestState.message !== 'OK') {
+          this.formErrors[this.getLoginRequestState.message] = true;
+        } else {
+          this.$router.push('/blog');
+        }
+      });
     }
   }
 }
