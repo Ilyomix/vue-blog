@@ -18,7 +18,11 @@
           <button
             v-if="viewMoreOptions && !areYouSureToDeletePost"
             class="button edit"
-            @click="handleEdit"
+            @click="handleEdit({
+              title,
+              body,
+              articleId,
+            })"
           >
             <edit-icon size="1.5x" class="mr-2" />
             Edit article
@@ -57,7 +61,7 @@
         </div>
       </div>
     </div>
-    <p>
+    <p class="no-text-overflow">
       {{ bodyText }}
     </p>
     <div
@@ -86,6 +90,7 @@ import {
   SkipBackIcon,
   EditIcon,
 } from 'vue-feather-icons';
+import { IEditPost } from 'src/store/posts/types';
 import '../styles/cards.scss';
 import './styles/text-card.scss';
 
@@ -143,8 +148,8 @@ export default class TextCard extends Vue {
     this.areYouSureToDeletePost = !this.areYouSureToDeletePost;
   }
 
-  private handleEdit() {
-    this.$router.push({ name: 'edit-post' });
+  private handleEdit(post: IEditPost) {
+    this.$emit('handleEdit', post);
   }
 
   private handleDelete(articleId: number) {

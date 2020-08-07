@@ -310,6 +310,11 @@ h1, h2, h3 {
                 0px 18px 23px rgba(0,0,0,0.02);
 }
 
+.no-text-overflow {
+    overflow-wrap: break-word;
+    word-break: break-all;
+}
+
 /************** Font *****************/
 /********* Size ***********/
 /**** Button content ****/

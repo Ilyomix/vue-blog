@@ -1,6 +1,5 @@
 <template>
   <EditCreateArticle
-    title="New article"
     :errorMessage="getErrorMessage()"
     :formErrors="formErrors"
     :isPostArticleRequestLoading="isPostArticleRequestLoading"
@@ -38,7 +37,6 @@ export default class CreatePost extends Vue {
 
   private formErrors: {[key: string]: boolean} = {
     form: false,
-    Unauthorized: false,
     'Failed to fetch': false,
   };
 
@@ -52,7 +50,6 @@ export default class CreatePost extends Vue {
     const errorMessages: {[key: string]: string} = {
       form: 'Some fields are empty !',
       'Failed to fetch': 'Impossible to create your article, check your internet connection',
-      Unauthorized: 'Server error, relog into your session.',
     };
 
     const errorIndex = Object
@@ -79,7 +76,7 @@ export default class CreatePost extends Vue {
 
         if (res) {
           this.$router.push('/blog');
-          this.notificationMessage('Your article is now posted !');
+          this.notificationMessage('Your new article is now posted !');
           this.removePostMessageWithDelay(this.postArticleMessageDelayToRemove);
         } else {
           this.formErrors['Failed to fetch'] = true;

@@ -11,7 +11,7 @@
     </div>
     <div class="edit-create-card shadow-md">
       <h1>
-        {{ form.title || title }}
+        {{ form.title || title || 'New Article' }}
       </h1>
       <div class="edit-create-error-wrapper">
         <h3 v-if="errorMessage" class="form-error-message shadow">
@@ -104,6 +104,12 @@ export default class EditCreateArticle extends Vue {
   @Prop({ type: String })
   private title!: string;
 
+  @Prop({ type: String })
+  private content!: string;
+
+  @Prop({ type: Number })
+  private articleId!: number;
+
   @Prop({ type: String, default: '' })
   private errorMessage!: string;
 
@@ -120,8 +126,8 @@ export default class EditCreateArticle extends Vue {
   }
 
   private form: {[key: string]: string | null} = {
-    title: null,
-    content: null,
+    title: this.title || null,
+    content: this.content || null,
   };
 
   private formClasses = (): {[key: string]: {[key: string]: string}} => ({
@@ -147,7 +153,10 @@ export default class EditCreateArticle extends Vue {
   }
 
   private onFormSubmit(): void {
-    this.$emit('onSubmit', this.form);
+    this.$emit('onSubmit', {
+      ...this.form,
+      id: this.articleId,
+    });
   }
 
   private backToHome(): void {

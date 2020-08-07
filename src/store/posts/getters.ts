@@ -5,6 +5,7 @@ import {
   PostsState,
   IPosts,
   IBlogRequestState,
+  IEditPost,
 } from './types';
 
 const getters: GetterTree<PostsState, {}> = {
@@ -16,6 +17,9 @@ const getters: GetterTree<PostsState, {}> = {
   },
   getNotificationMessage(state: PostsState): string {
     return state.notificationMessage;
+  },
+  getPostToEdit(state: PostsState): IEditPost {
+    return state.editPost.content;
   },
   isBlogViewIsLoading(state: PostsState): boolean {
     return state.blogRequestState.requestState.loading;

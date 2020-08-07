@@ -25,6 +25,13 @@ export const state: PostsState = {
     canJumpFirstPage: true,
   },
   notificationMessage: '',
+  editPost: {
+    content: {
+      id: null,
+      title: '',
+      body: '',
+    },
+  },
 };
 
 const namespaced: boolean = true;

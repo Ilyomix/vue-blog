@@ -6,7 +6,9 @@ import {
   CHANGE_ARTICLES_PAGE,
   SET_NAVIGATION_CONFIGURATION,
   NOTIFICATION_MESSAGE,
+  SAVE_POST_TO_UPDATE,
   IPosts,
+  IEditPost,
 } from './types';
 import articlesPerPage from 'src/constants/blog/navigation/navigation';
 
@@ -42,12 +44,15 @@ const mutations: MutationTree<PostsState> = {
     state.navigation.canJumpPrevPage = state.navigation.start - 1 > 0;
     state.navigation.canJumpLastPage = state.navigation.start < state.navigation.lastPage;
   },
+  [SAVE_POST_TO_UPDATE](state: PostsState, post: IEditPost) {
+    state.editPost.content = post;
+  },
   [CHANGE_ARTICLES_PAGE](state: PostsState, page: number) {
     state.navigation.start = page;
   },
   [NOTIFICATION_MESSAGE](state: PostsState, content: string) {
     state.notificationMessage = content;
-  }
+  },
 };
 
 export default mutations;

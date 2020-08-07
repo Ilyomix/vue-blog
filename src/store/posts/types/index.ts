@@ -6,6 +6,7 @@ export const store = createVuexClass(namespace);
 export const QUERY_POSTS = 'queryPosts';
 export const DELETE_POST = 'deletePost';
 export const UPDATE_POST = 'updatePost';
+export const SAVE_POST_TO_UPDATE = 'savePostToUpdate';
 export const CREATE_POST = 'createPost';
 export const UPDATE_BLOG_REQUEST_STATE = 'updateBlogRequestState';
 export const CHANGE_ARTICLES_PAGE = 'changeArticlesPage';
@@ -20,6 +21,12 @@ export interface IBlogRequestState {
     [key: string]: boolean,
   };
   message: string;
+}
+
+export interface IEditPost {
+  id: number | null;
+  title: string;
+  body: string;
 }
 
 export interface IPosts {
@@ -44,4 +51,7 @@ export interface PostsState {
   blogRequestState: IBlogRequestState;
   navigation: IBlogNavigation;
   notificationMessage: string;
+  editPost: {
+    content: IEditPost,
+  };
 }

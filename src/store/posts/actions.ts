@@ -1,6 +1,7 @@
 import { ActionTree } from 'vuex';
 import {
   getPosts,
+  createPostReq,
   updatePostReq,
   deletePostReq,
 } from './callers';
@@ -10,11 +11,13 @@ import {
   QUERY_POSTS,
   DELETE_POST,
   CREATE_POST,
+  SAVE_POST_TO_UPDATE,
   UPDATE_POST,
   SET_NAVIGATION_CONFIGURATION,
   UPDATE_BLOG_REQUEST_STATE,
   CHANGE_ARTICLES_PAGE,
   NOTIFICATION_MESSAGE,
+  IEditPost,
 } from './types';
 
 const actions: ActionTree<PostsState, {}> = {
@@ -84,9 +87,19 @@ const actions: ActionTree<PostsState, {}> = {
   [CHANGE_ARTICLES_PAGE]({ commit }, page: number) {
     commit(CHANGE_ARTICLES_PAGE, page);
   },
-  // [UPDATE_POST]({ commit }, page: number) {
-  //   commit(UPDATE_POST, page);
-  // },
+  async [UPDATE_POST](
+    { commit },
+    content: {
+      title: string,
+      content: string,
+      id: number
+    },
+  ) {
+    return updatePostReq(content).catch((err: Error) => { throw err; });
+  },
+  [SAVE_POST_TO_UPDATE]({ commit }, post: IEditPost) {
+    commit(SAVE_POST_TO_UPDATE, post);
+  },
   async [CREATE_POST](
     { commit },
     content: {
@@ -94,7 +107,7 @@ const actions: ActionTree<PostsState, {}> = {
       content: string,
     },
   ) {
-    return updatePostReq(content).catch((err: Error) => { throw err; });
+    return createPostReq(content).catch((err: Error) => { throw err; });
   },
   [NOTIFICATION_MESSAGE]({ commit }, content: string) {
     commit(NOTIFICATION_MESSAGE, content);

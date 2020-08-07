@@ -31,7 +31,7 @@ export const deletePostReq = async (articleId: number): Promise<any> => {
   return axios.delete(reqUrl, reqSettings).catch((e) => { throw e; });
 };
 
-export const updatePostReq = async (
+export const createPostReq = async (
   content: {
     title: string,
     content: string,
@@ -54,6 +54,32 @@ export const updatePostReq = async (
    };
 
   return axios.post(reqUrl, body, reqSettings).catch((e) => { throw e; });
+};
+
+export const updatePostReq = async (
+  content: {
+    title: string,
+    content: string,
+    id: number,
+  },
+): Promise<any> => {
+  const token = `Bearer ${localStorage.getItem('user-token')}`;
+  const reqUrl = `${Routes.posts.url}/${content.id}`;
+
+  const reqSettings = {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: token,
+    },
+  };
+
+  const body = {
+    title: content.title,
+    body: content.content,
+   };
+
+  return axios.put(reqUrl, body, reqSettings).catch((e) => { throw e; });
 };
 
 export default getPosts;

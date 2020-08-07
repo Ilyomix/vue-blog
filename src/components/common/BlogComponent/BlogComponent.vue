@@ -25,6 +25,7 @@
       :body="article.body"
       :articleId="article.id"
       @handleDelete="handleDelete"
+      @handleEdit="handleEdit"
     />
   </div>
 </template>
@@ -33,6 +34,7 @@
 import {
   store,
   IBlogRequestState,
+  IEditPost,
 } from 'src/store/posts/types';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import InteractiveCard from 'src/components/common/Cards/InteractiveCard/InteractiveCard.vue';
@@ -50,10 +52,13 @@ export default class BlogCard extends Vue {
 
   @Prop({ type: Array })
   private articles!: Array<{
-    id: number,
+    id: number | null,
     title: string,
     body: string,
   }>;
+
+  @store.Action
+  private savePostToUpdate!: (post: IEditPost) => void;
 
   @store.Getter
   private getNotificationMessage!: string;
@@ -65,6 +70,11 @@ export default class BlogCard extends Vue {
 
   private handleCreateClick(): void {
     this.$router.push({ name: 'create-post' });
+  }
+
+  private handleEdit(payload: IEditPost) {
+    this.savePostToUpdate(payload);
+    this.$router.push({ name: 'edit-post' });
   }
 
   private handleDelete(articleId: number): void {
