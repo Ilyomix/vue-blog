@@ -1,5 +1,5 @@
 <template>
-  <div v-if="getPosts.length && !isBlogViewIsLoading">
+  <div v-if="!getPosts.length && !isBlogViewIsLoading">
     <BlogComponent
       title="Articles"
       :notificationMessage="getNotificationMessage"
