@@ -13,7 +13,7 @@
 ### 0.1 How to run
   - `npm run production` : Build the application in production mode, and run it in local web-server
     - Once the server is ready, you can access to the application in your browser using this address ` http://localhost:4242` 
-    - _Nb: The local address is copied in the clipboard once the server is running_
+    - _Nb: The local address is stored in the clipboard once the server is running_
 - `npm run build` : Run the application in development mode locally
     - Once the web-server is running you can access to the application following this adress `http://localhost:8080`
 - `npm run build` : Generate production build of the application ready to be deployed
