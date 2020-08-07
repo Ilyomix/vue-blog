@@ -14,6 +14,9 @@ const getters: GetterTree<PostsState, {}> = {
   getBlogRequestState(state: PostsState): IBlogRequestState {
     return state.blogRequestState;
   },
+  getNotificationMessage(state: PostsState): string {
+    return state.notificationMessage;
+  },
   isBlogViewIsLoading(state: PostsState): boolean {
     return state.blogRequestState.requestState.loading;
   },

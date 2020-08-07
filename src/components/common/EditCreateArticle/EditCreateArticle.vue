@@ -1,7 +1,7 @@
 <template>
   <div class="edit-create-layout">
     <div class="edit-create-return-to-home-button-wrapper">
-      <button 
+      <button
         class="edit-create-return-to-home-button"
         @click="backToHome"
       >
@@ -23,6 +23,7 @@
         :class='formClasses().title.label'
         for="title"
       >
+        <book-icon size="1.25x" class="mr-2" />
         Article title
       </label>
       <input
@@ -37,6 +38,7 @@
         for="content"
         :class='formClasses().content.label'
       >
+       <file-text-icon size="1.25x" class="mr-2" />
         Article content
       </label>
       <textarea
@@ -84,6 +86,8 @@ import {
   ArrowRightIcon,
   RotateCwIcon,
   AlertTriangleIcon,
+  FileTextIcon,
+  BookIcon,
 } from 'vue-feather-icons';
 
 @Component({
@@ -92,6 +96,8 @@ import {
     ArrowRightIcon,
     RotateCwIcon,
     AlertTriangleIcon,
+    FileTextIcon,
+    BookIcon,
   },
 })
 export default class EditCreateArticle extends Vue {

@@ -326,6 +326,14 @@ h1, h2, h3 {
 }
 
 /************* Animations **************/
+/******* Transitions ***/
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to{
+opacity: 0;
+}
 /******* Rotate ********/
 @keyframes rotate {
     from {

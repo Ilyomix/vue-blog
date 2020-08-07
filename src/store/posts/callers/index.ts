@@ -48,7 +48,7 @@ export const updatePostReq = async (
     },
   };
 
-  const body = { 
+  const body = {
     title: content.title,
     body: content.content,
    };

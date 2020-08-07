@@ -2,6 +2,7 @@
   <div v-if="isBlogViewIsLoading">
     <InteractiveCard
       :text="title"
+      :notificationMessage="getNotificationMessage"
       @onCreateClick="handleCreateClick"
     />
     <TextCard
@@ -13,6 +14,7 @@
   <div v-else>
     <InteractiveCard
       :text="title"
+      :notificationMessage="getNotificationMessage"
       @onCreateClick="handleCreateClick"
     />
     <slot name="pagination" />
@@ -52,6 +54,9 @@ export default class BlogCard extends Vue {
     title: string,
     body: string,
   }>;
+
+  @store.Getter
+  private getNotificationMessage!: string;
 
   @store.Getter
   private isBlogViewIsLoading!: boolean;

@@ -5,6 +5,7 @@ import {
   UPDATE_BLOG_REQUEST_STATE,
   CHANGE_ARTICLES_PAGE,
   SET_NAVIGATION_CONFIGURATION,
+  NOTIFICATION_MESSAGE,
   IPosts,
 } from './types';
 import articlesPerPage from 'src/constants/blog/navigation/navigation';
@@ -44,6 +45,9 @@ const mutations: MutationTree<PostsState> = {
   [CHANGE_ARTICLES_PAGE](state: PostsState, page: number) {
     state.navigation.start = page;
   },
+  [NOTIFICATION_MESSAGE](state: PostsState, content: string) {
+    state.notificationMessage = content;
+  }
 };
 
 export default mutations;

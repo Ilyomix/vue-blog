@@ -4,9 +4,17 @@
     <div class="loader-skeleton round-button" />
   </div>
   <div v-else class="card shadow-md">
-    <h1>
-      {{ text }}
-    </h1>
+    <div class="header-wrapper">
+      <h1>
+        {{ text }}
+      </h1>
+      <transition name="fade">
+        <span v-if="notificationMessage" class="label">
+          <check-circle-icon size="1.5x" class="mr-2" />
+          {{ notificationMessage }}
+        </span>
+      </transition>
+    </div>
     <button
       class="button circular violet"
       @click="handleCreateClick"
@@ -21,13 +29,17 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { PlusIcon } from 'vue-feather-icons';
+import {
+  PlusIcon,
+  CheckCircleIcon,
+} from 'vue-feather-icons';
 import '../styles/cards.scss';
 import './styles/interactive-card.scss';
 
 @Component({
   components: {
     PlusIcon,
+    CheckCircleIcon,
   },
 })
 export default class InteractiveCard extends Vue {
@@ -36,6 +48,9 @@ export default class InteractiveCard extends Vue {
 
   @Prop({ type: Boolean })
   private isLoading!: boolean;
+
+  @Prop({ type: String })
+  private notificationMessage!: string;
 
   private handleCreateClick(): void {
     this.$emit('onCreateClick');

@@ -27,11 +27,14 @@ export default class CreatePost extends Vue {
     body: string,
   }) => Promise<Response>;
 
+  @store.Action
+  private notificationMessage!: (content: string) => void;
+
   private form = {};
 
   private isPostArticleRequestLoading = false;
 
-  private postArticleRequestErrorMessage = '';
+  private postArticleMessageDelayToRemove = 4000;
 
   private formErrors: {[key: string]: boolean} = {
     form: false,
@@ -71,11 +74,24 @@ export default class CreatePost extends Vue {
     if (!this.formErrors.form) {
       this.isPostArticleRequestLoading = true;
 
-      await this.createPost(content).then(() => {
+      await this.createPost(content).then((res: any) => {
         this.isPostArticleRequestLoading = false;
-        this.$router.push('/blog');
+
+        if (res) {
+          this.$router.push('/blog');
+          this.notificationMessage('Your article is now posted !');
+          this.removePostMessageWithDelay(this.postArticleMessageDelayToRemove);
+        } else {
+          this.formErrors['Failed to fetch'] = true;
+        }
       });
     }
+  }
+
+  private removePostMessageWithDelay(delay: number): void {
+    setTimeout(() => {
+      this.notificationMessage('');
+    }, delay);
   }
 }
 </script>

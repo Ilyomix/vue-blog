@@ -9,6 +9,7 @@ export const UPDATE_POST = 'updatePost';
 export const CREATE_POST = 'createPost';
 export const UPDATE_BLOG_REQUEST_STATE = 'updateBlogRequestState';
 export const CHANGE_ARTICLES_PAGE = 'changeArticlesPage';
+export const NOTIFICATION_MESSAGE = 'notificationMessage';
 export const SET_NAVIGATION_CONFIGURATION = 'setNavigationConfiguration';
 
 export interface IBlogRequestState {
@@ -42,4 +43,5 @@ export interface PostsState {
   posts: IPosts[];
   blogRequestState: IBlogRequestState;
   navigation: IBlogNavigation;
+  notificationMessage: string;
 }

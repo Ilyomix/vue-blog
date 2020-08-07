@@ -14,6 +14,7 @@ import {
   SET_NAVIGATION_CONFIGURATION,
   UPDATE_BLOG_REQUEST_STATE,
   CHANGE_ARTICLES_PAGE,
+  NOTIFICATION_MESSAGE,
 } from './types';
 
 const actions: ActionTree<PostsState, {}> = {
@@ -86,14 +87,17 @@ const actions: ActionTree<PostsState, {}> = {
   // [UPDATE_POST]({ commit }, page: number) {
   //   commit(UPDATE_POST, page);
   // },
-  [CREATE_POST](
+  async [CREATE_POST](
     { commit },
     content: {
       title: string,
-      body: string,
+      content: string,
     },
   ) {
-    return updatePostReq(content);
+    return updatePostReq(content).catch((err: Error) => { throw err; });
+  },
+  [NOTIFICATION_MESSAGE]({ commit }, content: string) {
+    commit(NOTIFICATION_MESSAGE, content);
   },
 };
 

@@ -23,7 +23,7 @@ Vue.http.interceptors.push((request: any, next: any) => {
 axios.interceptors.response.use((response: any) => {
   return response;
 }, (res: any) => {
-  if (res.response.status === 401) {
+  if (res.response && res.response.status === 401) {
     window.location.replace('/login');
   }
 });

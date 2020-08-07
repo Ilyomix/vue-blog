@@ -2,6 +2,7 @@
   <div class="fluid">
     <BlogComponent
       title="Articles"
+      :notificationMessage="getNotificationMessage"
       :articles="getPosts"
       :isLoading="isLoading"
       @handleDelete="handleDelete"
@@ -51,6 +52,9 @@ export default class Blog extends Vue {
 
   @store.Getter
   private getArticlesLastPage !: number;
+
+  @store.Getter
+  private getNotificationMessage !: number;
 
   @store.Getter
   private canJumpNextPage!: boolean;

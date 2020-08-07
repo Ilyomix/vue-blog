@@ -24,6 +24,7 @@ export const state: PostsState = {
     canJumpPrevPage: true,
     canJumpFirstPage: true,
   },
+  notificationMessage: '',
 };
 
 const namespaced: boolean = true;
