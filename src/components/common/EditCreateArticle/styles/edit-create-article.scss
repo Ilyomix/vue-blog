@@ -1,0 +1,150 @@
+@use 'sass:map';
+@import 'src/styles/variables.scss';
+/****************** Layout ******************/
+.edit-create-layout {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    max-width: 780px;
+
+    h1, input, textarea {
+        align-self: flex-start;
+        min-width: calc(100% - 4rem);
+        margin: 1.5rem 1rem 4rem 1rem;
+    }
+
+    h1 {
+        margin-bottom: 2.5rem;
+    }
+
+    input {
+        margin: 1rem 0rem 3rem 1rem;
+        width: calc(100% - 4rem);
+    }
+
+    textarea {
+        min-height: 300px;
+        max-height: 300px;
+        min-width: calc(100% - 4rem);
+        max-width: calc(100% - 4rem);
+        resize: none;
+    }
+
+    label {
+        display: inline-flex;
+        margin-bottom: 0rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .edit-create-card {
+        background-color: white;
+        padding: 1rem 2rem;
+        margin: 1rem;
+        max-width: 780px;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 10px;
+    }
+
+    .edit-create-error-wrapper {
+        width: calc(100% - 2rem);
+        margin: 0 auto;
+        margin-bottom: 1rem;
+        display: block;
+        .form-error-message {
+            background-color: white;
+            color: map.get($theme-color, "red");
+            display: inline-flex;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            margin-top: -4rem;
+            border-radius: 10px;
+            font-weight: 400;
+            font-size: 14px;
+        }
+    }
+
+    .submit-button-layout {
+        display: flex;
+        width: calc(100% - 2rem);
+        margin: 0 auto;
+        margin-top: -1rem;
+        margin-bottom: 1rem;
+        justify-content: flex-end;
+        align-items: center;
+
+        button {
+            width: 100%;
+            border-radius: 10px;
+            background-image: linear-gradient(270deg, #b224ef 0%, #7579ff 100%);
+            color: white;
+            border: none;
+            outline: 0;
+            padding: 1rem;
+            filter: saturate(1);
+            transition: all 0.2s ease;
+            font-weight: 600;
+            svg {
+                transform: translateX(0px);
+                transition: all 0.2s ease;
+            }
+        }
+
+        button:hover {
+            width: 100%;
+            background-image: linear-gradient(270deg, #b224ef 0%, #7579ff 100%);
+            color: white;
+            border: none;
+            filter: saturate(2);
+            transition: all 0.25s ease;
+            font-weight: 600;
+
+            svg {
+                transform: translateX(5px);
+            }
+        }
+    }
+
+    .submit-button-layout.loading {
+        button {
+            background: linear-gradient(270deg, #b224ef, #7579ff);
+            background-size: 150% 150%;
+        
+            animation: gradientWave 2.5s ease infinite;
+        }
+    }
+
+    .edit-create-return-to-home-button {
+        display: flex;
+        font-family: 'Inter';
+        justify-content: center;
+        align-items: center;
+        outline: 0;
+        font-size: 18px;
+        background: none;
+        margin: 1rem 0rem 2rem 0; 
+        border: 1px solid rgba(255, 255, 255, 0);
+        border-radius: 15px;
+        transform: translateX(-1rem);
+        color: map.get($theme-color, "accent");
+        padding: 0.25rem 1rem;
+        cursor: pointer;
+        transition: all 0.5s ease;
+    }
+    
+    .edit-create-return-to-home-button:hover {
+        border: 1px solid rgba(255, 255, 255, 0.97);
+        background: rgba(255, 255, 255, 1);
+        transform: translateX(0rem);
+        color: map.get($theme-color, "accent");
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        transition: all 0.5s ease;
+    }
+
+    .edit-create-return-to-home-button:active {
+        opacity: 0.6;
+        transition: all 0.5s ease;
+    }
+}

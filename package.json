@@ -1,9 +1,12 @@
 {
   "name": "vue-blog",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "author": "Ilyes Abd-Lillah",
   "private": false,
   "scripts": {
+    "build": "vue-cli-service build",
     "serve": "vue-cli-service serve --host localhost",
+    "production": "npm run build && npm install -g serve && serve -l 4242 -s dist",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

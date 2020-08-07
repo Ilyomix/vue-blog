@@ -1,0 +1,23 @@
+@use 'sass:map';
+@import 'src/styles/variables.scss';
+/****************** Layout ******************/
+
+.create-element-icon {
+    color: map.get($theme-color, "accent");
+    font-size: 24px;
+}
+
+.header-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -0.5rem;
+        margin-bottom: 1rem;
+        border-radius: 15px;
+        color: map.get($theme-color, "success")
+    }
+}

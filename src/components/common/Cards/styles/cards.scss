@@ -1,0 +1,32 @@
+@use 'sass:map';
+@import 'src/styles/variables.scss';
+/****************** Layout ******************/
+
+.card {
+    background-color: white;
+    padding: 1rem 3rem;
+    border-radius: 10px;
+    margin: 2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+.card.text {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 3rem 1rem 3rem;
+
+    h2 {
+        margin-bottom: 0rem;
+    }
+
+    .button-view-more-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding: 0;
+        margin: 1rem 0 1rem 0;
+    }
+}

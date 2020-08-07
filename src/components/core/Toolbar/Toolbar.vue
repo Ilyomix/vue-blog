@@ -1,7 +1,11 @@
 <template>
   <div class="toolbar-layout">
     <div class="content">
-      <div class="logo-layout">
+      <div
+        class="logo-layout"
+        role="presentation"
+        @click="backToHome"
+      >
         <img src="./assets/blog-generic-logo.png" class="logo" />
         <div class="title">
           VUEBLOG
@@ -44,6 +48,10 @@ export default class Toolbar extends Vue {
   private disconnectUserFromToolbar(): void {
     this.disconnectUser();
     this.$router.push('/login');
+  }
+
+  private backToHome(): void {
+    this.$router.push('/blog');
   }
 }
 </script>
