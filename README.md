@@ -56,7 +56,7 @@
 - #### Code
     - Typed code
     - Using ES6+ features
-    - Axios / ES6 for consuming REST APIs
+    - Axios / ES6 Fetch for consuming REST APIs
 - #### Misc
     - All the components are made by myself, no CSS library were used in the project
     - Using `vue-feather-icons` to get awesome icons assets
