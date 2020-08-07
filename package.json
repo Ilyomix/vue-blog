@@ -6,7 +6,7 @@
   "scripts": {
     "build": "vue-cli-service build",
     "serve": "vue-cli-service serve --host localhost",
-    "production": "npm run build && npm install -g serve && serve -s dist && serve -s build -l 4242",
+    "production": "npm run build && npm install -g serve && serve -l 4242 -s dist",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
