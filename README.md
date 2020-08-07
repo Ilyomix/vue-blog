@@ -64,7 +64,7 @@
     - Made with ❤️
     
 # 2. Tech
-v[vue-blog] can't exist without these awesome open sources technologies:
+[vue-blog] can't exist without these awesome open sources technologies:
 
 * [vue] - The Progressive JavaScript Framework
 * [vuex] - Vuex is a state management pattern + library for Vue.js applications
