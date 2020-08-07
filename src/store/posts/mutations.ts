@@ -1,5 +1,5 @@
 import { MutationTree } from 'vuex';
-import articlesPerPage from 'src/constants/blog/navigation/navigation';
+import { articlesPerPage } from 'src/constants/blog/navigation/navigation';
 import {
   PostsState,
   QUERY_POSTS,

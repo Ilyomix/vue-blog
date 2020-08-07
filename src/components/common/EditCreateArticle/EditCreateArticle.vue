@@ -119,12 +119,6 @@ export default class EditCreateArticle extends Vue {
   @Prop({ type: Boolean, default: false })
   private isPostArticleRequestLoading!: boolean;
 
-  private resetFormErrors() {
-    Object.keys(this.formErrors).forEach((key: string) => {
-      this.formErrors[key] = false;
-    });
-  }
-
   private form: {[key: string]: string | null} = {
     title: this.title || null,
     content: this.content || null,
@@ -144,6 +138,12 @@ export default class EditCreateArticle extends Vue {
               || this.form.content === null) ? 'input error' : 'input',
     },
   })
+
+  private resetFormErrors() {
+    Object.keys(this.formErrors).forEach((key: string) => {
+      this.formErrors[key] = false;
+    });
+  }
 
   private async onPostSubmit(payload: {[key: string]: string}): Promise<void> {
     this.resetFormErrors();
