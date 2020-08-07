@@ -97,5 +97,5 @@ MIT
    [npm]: <https://www.npmjs.com/>
    [vuex]: <https://vuex.vuejs.org/>
    [vue-feather-icons]: <https://vue-feather-icons.egoist.sh/>
-   [vue-blog]: <https://https://github.com/Ilyomix/vue-blog/>
+   [vue-blog]: <https://github.com/Ilyomix/vue-blog/>
 
