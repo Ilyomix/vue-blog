@@ -57,7 +57,7 @@ import {
     ChevronsLeftIcon,
   },
 })
-export default class CreatePost extends Vue {
+export default class Pagination extends Vue {
   @Prop({ type: Boolean })
   private isLoading!: boolean;
 
