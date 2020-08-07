@@ -10,7 +10,7 @@
       <p  class="text red-half">
         {{ content }}
       </p>
-      <code>
+      <code v-if="message">
         {{ message }}
       </code>
     </div>
