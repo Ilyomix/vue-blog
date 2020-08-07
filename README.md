@@ -28,7 +28,7 @@
 
 - #### Login
     - Accessiblity enabled in `/login` form
-    - UI states: loadings, errors, and login success state are displayed for user
+    - UI states: loadings, errors, and login success state are displayed for the user
     - Login form validity check before sending authentication request
     - Press `Enter` to login directly once you fill the form
     - Automatic redirection to `/blog` (homepage) on authentication 
@@ -41,7 +41,7 @@
     - Article options are avaliable using the three-dot menu button (features: delete article, edit article)
     - Users can delete and article only after confirmation
     - Users can add articles using the '+' button located on the top right side of the view
-    - UI states: loading articles, error to get articles, no articles avaliable and fetch articles state are displayed for user
+    - UI states: loading articles, error to get articles, no articles avaliable and fetch articles state are displayed for the user
     - Pagination (previous page, next page, last page, first page)
     - Notifications: displayed when the user successfully edit or create an article
 - #### Edit / Create article
