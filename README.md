@@ -81,7 +81,7 @@ vue-blog can't exist without these awesome open sources technologies:
 ![Alt text](https://i.ibb.co/ynPgJgQ/Annotation-2020-08-07-063421.png "Blog view")
 
 - #### Edit / Create article view
-![Alt text](https://i.ibb.co/0rQqjRL/Annotation-2020-08-07-063343-2.png "Edit / Create view")
+![Alt text](https://i.ibb.co/dpvhKSm/Annotation-2020-08-07-063943.png "Edit / Create view")
 
 License
 ----
