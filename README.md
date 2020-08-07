@@ -35,7 +35,7 @@
     - Eye-candies
 - #### Application toolbar
     - Click on the application logo to be redirected to homepage (`/blog`)
-    - User can disconnect from session using the 'Log out' button, once the session is closed the authentication token is deleted and user is redirected to `/login`
+    - The user can disconnect from session using the 'Log out' button, once the session is closed the authentication token is deleted and user is redirected to `/login`
 - #### Blog View
     - Articles are displayed in cards
     - Article options are avaliable using the three-dot menu button (features: delete article, edit article)
@@ -43,9 +43,9 @@
     - Users can add articles using the '+' button located on the top right side of the view
     - UI states: loading articles, error to get articles, no articles avaliable and fetch articles state are displayed for the user
     - Pagination (previous page, next page, last page, first page)
-    - Notifications: displayed when the user successfully edit or create an article
+    - Notifications: displayed when the user had successfully edit or create an article
 - #### Edit / Create article
-    - UI states: loadings, errors, and edit / creation success state are displayed for user
+    - UI states: loadings, errors, and edit / creation success state are displayed for the user
     - Redirect to `/blog` after creating or editing an article successfully
 - #### Footer
     - Dynamic copyright date
