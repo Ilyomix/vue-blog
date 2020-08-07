@@ -17,16 +17,17 @@
       :notificationMessage="getNotificationMessage"
       @onCreateClick="handleCreateClick"
     />
-    <slot name="pagination" />
-    <TextCard
-      v-for="(article, index) in articles"
-      :key="`${article.title}--${index + 1}`"
-      :title="article.title"
-      :body="article.body"
-      :articleId="article.id"
-      @handleDelete="handleDelete"
-      @handleEdit="handleEdit"
-    />
+    <div v-if="!hidePosts">
+      <TextCard
+        v-for="(article, index) in articles"
+        :key="`${article.title}--${index + 1}`"
+        :title="article.title"
+        :body="article.body"
+        :articleId="article.id"
+        @handleDelete="handleDelete"
+        @handleEdit="handleEdit"
+      />
+    </div>
   </div>
 </template>
 
@@ -56,6 +57,9 @@ export default class BlogCard extends Vue {
     title: string,
     body: string,
   }>;
+
+  @Prop({ type: Boolean })
+  private hidePosts!: boolean;
 
   @store.Action
   private savePostToUpdate!: (post: IEditPost) => void;

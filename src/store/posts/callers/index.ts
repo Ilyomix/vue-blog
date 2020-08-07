@@ -51,7 +51,7 @@ export const createPostReq = async (
   const body = {
     title: content.title,
     body: content.content,
-   };
+  };
 
   return axios.post(reqUrl, body, reqSettings).catch((e) => { throw e; });
 };
@@ -77,7 +77,7 @@ export const updatePostReq = async (
   const body = {
     title: content.title,
     body: content.content,
-   };
+  };
 
   return axios.put(reqUrl, body, reqSettings).catch((e) => { throw e; });
 };

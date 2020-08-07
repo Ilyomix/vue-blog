@@ -33,12 +33,16 @@ const actions: ActionTree<PostsState, {}> = {
           stateKey: 'fetched',
           stateValue: true,
         });
-        commit(QUERY_POSTS, res.data['hydra:member']);
-        commit(SET_NAVIGATION_CONFIGURATION, res.data['hydra:totalItems']);
-        commit(UPDATE_BLOG_REQUEST_STATE, {
-          stateKey: 'loading',
-          stateValue: false,
-        });
+        if (res) {
+          commit(QUERY_POSTS, res.data['hydra:member']);
+          commit(SET_NAVIGATION_CONFIGURATION, res.data['hydra:totalItems']);
+          commit(UPDATE_BLOG_REQUEST_STATE, {
+            stateKey: 'loading',
+            stateValue: false,
+          });
+        } else {
+          throw new Error('Error reason: Unable to resolve request');
+        }
       })
       .catch((err: Error) => {
         commit(UPDATE_BLOG_REQUEST_STATE, {
@@ -92,7 +96,7 @@ const actions: ActionTree<PostsState, {}> = {
     content: {
       title: string,
       content: string,
-      id: number
+      id: number,
     },
   ) {
     return updatePostReq(content).catch((err: Error) => { throw err; });

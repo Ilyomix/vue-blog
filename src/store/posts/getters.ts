@@ -30,6 +30,9 @@ const getters: GetterTree<PostsState, {}> = {
   isBlogViewHasError(state: PostsState): boolean {
     return state.blogRequestState.requestState.error;
   },
+  getBlogViewErrorMessage(state: PostsState): string {
+    return state.blogRequestState.message;
+  },
   getCurrentArticlePage(state: PostsState): number {
     return state.navigation.start;
   },

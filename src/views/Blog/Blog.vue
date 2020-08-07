@@ -1,18 +1,39 @@
 <template>
-  <div class="fluid">
+  <div v-if="!getPosts.length && !isBlogViewIsLoading">
     <BlogComponent
       title="Articles"
       :notificationMessage="getNotificationMessage"
       :articles="getPosts"
-      :isLoading="isLoading"
       @handleDelete="handleDelete"
+      hidePosts
+    />
+    <EmptyPage
+      title="No articles published yet"
+      content="Press the + Button the write your first post !"
+    />
+  </div>
+  <div v-else-if="isBlogViewHasError">
+    <ErrorPage
+      title="He's dead Jim !"
+      content="Seems we had some issues with our servers or your internet connection,
+      check your setup or come back later."
+      :message="getBlogViewErrorMessage"
+    />
+  </div>
+  <div class="fluid" v-else-if="!isBlogViewHasError">
+    <BlogComponent
+      title="Articles"
+      :notificationMessage="getNotificationMessage"
+      :articles="getPosts"
+      @handleDelete="handleDelete"
+      :hidePosts="!getPosts.length"
     />
     <Pagination
+      v-if="getPosts.length"
       @handleChange="handleNavigationChange"
       onClickScrollTopPage
       :currentPage="getCurrentArticlePage"
       :maxPage="getArticlesLastPage"
-      :isLoading="isLoading"
       :navigationPossibility="{
         canJumpNextPage,
         canJumpLastPage,
@@ -27,6 +48,7 @@
 import {
   store,
   IPosts,
+  IBlogRequestState,
 } from 'src/store/posts/types';
 import {
   Vue,
@@ -36,17 +58,18 @@ import {
 } from 'vue-property-decorator';
 import BlogComponent from 'src/components/common/BlogComponent/BlogComponent.vue';
 import Pagination from 'src/components/common/Pagination/Pagination.vue';
+import EmptyPage from 'src/components/common/EmptyPage/EmptyPage.vue';
+import ErrorPage from 'src/components/common/ErrorPage/ErrorPage.vue';
 
 @Component({
   components: {
     BlogComponent,
     Pagination,
+    EmptyPage,
+    ErrorPage,
   },
 })
 export default class Blog extends Vue {
-  @Prop({ type: Boolean })
-  private isLoading!: boolean;
-
   @store.Getter
   private getCurrentArticlePage !: number;
 
@@ -68,6 +91,18 @@ export default class Blog extends Vue {
   @store.Getter
   private canJumpFirstPage!: boolean;
 
+  @store.Getter
+  private getPosts!: IPosts[];
+
+  @store.Getter
+  private isBlogViewHasError!: boolean;
+
+  @store.Getter
+  private isBlogViewIsLoading!: boolean;
+
+  @store.Getter
+  private getBlogViewErrorMessage!: string;
+
   @store.Action
   private queryPosts!: (page: number) => Promise<Response>;
 
@@ -76,9 +111,6 @@ export default class Blog extends Vue {
 
   @store.Action
   private changeArticlesPage!: (page: number) => void;
-
-  @store.Getter
-  private getPosts!: IPosts[];
 
   private mounted() {
     this.queryPosts(this.getCurrentArticlePage);

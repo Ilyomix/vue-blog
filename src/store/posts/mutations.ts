@@ -1,4 +1,5 @@
 import { MutationTree } from 'vuex';
+import articlesPerPage from 'src/constants/blog/navigation/navigation';
 import {
   PostsState,
   QUERY_POSTS,
@@ -10,7 +11,6 @@ import {
   IPosts,
   IEditPost,
 } from './types';
-import articlesPerPage from 'src/constants/blog/navigation/navigation';
 
 const mutations: MutationTree<PostsState> = {
   [UPDATE_BLOG_REQUEST_STATE](

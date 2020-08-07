@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
+import axios from 'axios';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import axios from 'axios';
 
 Vue.use(VueResource);
 
@@ -20,9 +20,7 @@ Vue.http.interceptors.push((request: any, next: any) => {
   });
 });
 
-axios.interceptors.response.use((response: any) => {
-  return response;
-}, (res: any) => {
+axios.interceptors.response.use((response: any) => response, (res: any) => {
   if (res.response && res.response.status === 401) {
     window.location.replace('/login');
   }
