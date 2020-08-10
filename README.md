@@ -20,7 +20,7 @@
 - `npm run lint` : Run Eslint and Tslint auto-fix
 
 ### 0.2 Credentials to access the plaform
-- Login: `foo`, Password: `bar`
+- Login: `foo` - Password: `bar`
 
 # 1. Features
 - #### Authentication
